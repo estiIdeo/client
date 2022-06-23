@@ -1,0 +1,10 @@
+<div [formGroup]="group">
+  <ideo-multiselect
+    formControlName="value"
+    [placeholder]="filter.placeholder || filter.label"
+    [options]="!!filter.asyncOptions ? (filter.asyncOptions | async) : filter.options"
+    [lazyOptions]="!!filter.lazyOptions ? filter.lazyOptions : null"
+    [queryFilters]="!!filter.queryFilters ? filter.queryFilters : null"
+    [showSelectPrefix]="true"
+  ></ideo-multiselect>
+</div>

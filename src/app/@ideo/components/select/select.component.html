@@ -1,0 +1,58 @@
+<div ngbDropdown [placement]="placement" [container]="appendTo">
+  <button #input type="button"
+    class="{{ buttonStyleClass }} form-control d-flex justify-content-between align-items-center"
+    [ngClass]="{ 'position-relative': !showPlaceholder }" (click)="scrollEnd()" [id]="id" [disabled]="disabled"
+    ngbDropdownToggle (focus)="focused()">
+    <ng-container *ngIf="!!showPlaceholder; else iconToggle">
+      <ng-container *ngIf="!showSelectPrefix; else withPrefix">
+        {{(label || placeholder) | translate}}
+      </ng-container>
+      <ng-template #withPrefix>
+        {{
+          (!!value || value === 0) ? ('Portal.Common.Selected' | translate : {value
+          :(label || placeholder) | translate }) :
+          ('Portal.Common.SelectOption' | translate : {value :(placeholder || 'Portal.Common.SelectOption.DefaultValue') |
+          translate})
+          }}
+        </ng-template>
+    </ng-container>
+    <ng-template #iconToggle>
+      <i class="fas fa-chevron-down toggler"></i>
+    </ng-template>
+  </button>
+  <div *ngIf="!lazyOptions" ngbDropdownMenu   [attr.aria-labelledby]="id" [ngStyle]="dropdownMenuStyle"
+    [ngClass]="dropdownMenuClass" class="py-0 my-0 shadow dropdown-div">
+    <button type="button" *ngFor="let option of options " [disabled]="option.disabled" ngbDropdownItem class="btn px-2"
+      [ngClass]="{
+        active: !!value ? (!!dataKey ? option.value[dataKey] === value[dataKey] : option.value === value) : false
+      }" (click)="optionClicked(option.value)">
+      <i *ngIf="fixIcon(option?.icon) as icon" [class]="icon"> </i>
+      {{ option.label | translate }}
+    </button>
+    <button type="button" [disabled]="true" ngbDropdownItem class="btn px-2" [ngClass]="{
+      'd-none' : !!options?.length
+    }">
+      {{ 'Portal.Common.Select.NoOptions' | translate }}
+    </button>
+  </div>
+  <div *ngIf="!!lazyOptions" [ngStyle]="dropdownMenuStyle" [ngClass]="dropdownMenuClass" ngbDropdownMenu
+    [attr.aria-labelledby]="id" style="z-index: 1000;" class="w-100 py-0 my-0 shadow dropdown-div">
+    <cdk-virtual-scroll-viewport style="height: 100px" (scrolledIndexChange)="nextBatch($event, null)"
+      [itemSize]="27.19" *ngIf="asyncOptions | async as aOptions">
+      <button type="button" *cdkVirtualFor="let option of aOptions; let i = index; trackBy: trackByIdx" ngbDropdownItem
+        class="btn px-2" [ngClass]="{
+          active: !!value ? (!!dataKey ? option.value[dataKey] === value[dataKey] : option.value === value) : false
+        }" (click)="optionClicked(option.value)">
+        {{ option.label | translate }}
+      </button>
+      <button type="button" [disabled]="true" *cdkVirtualFor="let option of [0]" ngbDropdownItem class="btn px-2"
+        [ngClass]="{
+        'd-none' : !!aOptions?.length
+      }">
+        {{ 'Portal.Common.Select.NoOptions' | translate }}
+      </button>
+    </cdk-virtual-scroll-viewport>
+  </div>
+</div>
+<span *ngIf="!!showClear && !!value" class="ml-auto f-16 font-weight-bold mr-1 position-absolute p-1 clear-btn"
+  (click)="optionClicked(null)">&times;</span>

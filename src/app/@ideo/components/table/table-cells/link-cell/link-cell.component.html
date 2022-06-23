@@ -1,0 +1,19 @@
+<ng-container>
+  <a
+    [routerLink]="col.href ? col.href(item[col.field], item) : ['./']"
+    [target]="col?.data?.blank ? '_blank' : '_self'"
+    [ngClass]="col.styleClass ? col.styleClass : ''"
+    [ngbTooltip]="col.tooltip || ''"
+  >
+    <i *ngIf="!!col.icon" [class]="col.icon"></i>
+    {{
+      !!col.parsedFullData
+        ? col.parsedFullData(item)
+        : !!col.parsedData
+        ? col.parsedData(item[col.field])
+        : !!col.parsedData$
+        ? (col.parsedData$(item[col.field]) | async)
+        : item[col.field]
+    }}
+  </a>
+</ng-container>

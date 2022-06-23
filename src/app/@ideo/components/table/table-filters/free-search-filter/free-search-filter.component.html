@@ -1,0 +1,8 @@
+<div [formGroup]="group" class="input-group">
+    <input type="text" [placeholder]="(filter.placeholder || filter.label) | translate" class="form-control"
+        [ngClass]="filter?.inputStyle" formControlName="value" />
+    <div class="input-group-append">
+        <ideo-multiselect [showIconToggle]="true" formControlName="fields" [options]="filterKeys">
+        </ideo-multiselect>
+    </div>
+</div>

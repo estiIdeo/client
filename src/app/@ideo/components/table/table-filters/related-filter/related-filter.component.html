@@ -1,0 +1,30 @@
+<div [formGroup]="group">
+  <div formGroupName="innerFilter" class="input-group">
+    <input
+      type="text"
+      *ngIf="!filter.innerFilter"
+      [placeholder]="(filter.placeholder || filter.label) | translate"
+      class="form-control"
+      formControlName="value"
+    />
+
+    <ng-container
+      *ngIf="!filter || (!!filter.innerFilter && !!filter && filter.filter != false)"
+      [tableFilter]="filter.innerFilter"
+      [column]="column"
+      [group]="group"
+      [innerFilter]="true"
+    >
+    </ng-container>
+
+    <div class="input-group-append" *ngIf="!filter.innerFilter">
+      <ideo-select
+        [showPlaceholder]="false"
+        [options]="innerComparisonOptions"
+        placeholder="Operator"
+        formControlName="matchMode"
+      >
+      </ideo-select>
+    </div>
+  </div>
+</div>

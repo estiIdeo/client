@@ -1,0 +1,67 @@
+@import "~src/theme/user/variables";
+
+.notifications {
+  position: fixed;
+  top: 4rem;
+  // right: 12px;
+  z-index: 3000;
+
+  ul {
+    list-style-type: none;
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    max-width: 100%;
+    position: relative;
+    overflow: hidden;
+    margin: 0 0 6px;
+    li {
+      padding: 1rem 1rem 1rem 3.5rem;
+      border-radius: 4px;
+      z-index: 1000;
+      box-shadow: 0 0.5rem 1rem rgba(0, 0, 0, 0.06);
+      margin: 0 0 6px;
+      .toast-close-button {
+        background: 0 0;
+        border: 0;
+        -webkit-appearance: none;
+        top: -10px;
+        position: relative;
+        right: -0.3em;
+        float: right;
+        font-size: 1.25rem;
+        font-weight: 700;
+        color: #fff;
+      }
+      &.success {
+        color: #fff;
+        background-color: $color-success;
+        i {
+          content: "\f058";
+          display: flex;
+          font-family: "Font Awesome 5 Pro";
+          font-size: 1.8rem;
+          left: 1rem;
+          top: 0;
+          bottom: 0;
+        }
+      }
+
+      &.error {
+        color: #fff;
+        background-color: $color-danger;
+      }
+
+      &.warning {
+        color: #fff;
+        background-color: $color-warning;
+      }
+
+      &.info {
+        color: #fff;
+        background-color: $color-info;
+        opacity: 0.8;
+      }
+    }
+  }
+}

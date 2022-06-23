@@ -1,0 +1,24 @@
+<ng-container *ngIf="!!button.click || !!button.type">
+  <span [ngbTooltip]="(button.tooltip | translate) || ''" [placement]="'left'">
+    <button [type]="button.type || 'button'"
+      class="btn mb-0 d-flex align-items-center {{ button.styleClass || defaultClass }}{{ sizeClass }}" [disabled]="
+    !!button.disabled$
+    ? (button.disabled$ | async)
+    : !!button.disable
+    ? button.disable(item)
+    : !!button.disabled || !!disabled
+    " (click)="!!button.click ? button.click(item, button) : null">
+      <prx-icon *ngIf="!!button.icon" [icon]="button.icon" [iconClass]="button?.iconClass">
+      </prx-icon>
+      <span>{{button.label| translate}}</span>
+    </button>
+  </span>
+</ng-container>
+<ng-container *ngIf="!!button.href && button.href(item) as link">
+  <a href="javascript:" [routerLink]="link" [queryParams]="!!button.queryParams && button.queryParams(item)"
+    class="btn mb-0 d-flex align-items-center {{ button.styleClass || defaultClass }}{{ sizeClass }}"
+    [placement]="'left'" [ngbTooltip]="(button.tooltip | translate) || ''" [state]="{ entity: item }">
+    <prx-icon *ngIf="!!button.icon" [icon]="button.icon" [iconClass]="button?.iconClass"></prx-icon>
+    <span>{{button.label|translate}}</span>
+  </a>
+</ng-container>

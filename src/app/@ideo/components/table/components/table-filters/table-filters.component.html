@@ -1,0 +1,28 @@
+<div class="d-flex justify-content-start pb-3 mb-3">
+  <button *ngIf="!forceCollapse" type="button" class="btn filter-collapse position-relative"
+    [ngClass]="{ 'btn-primary border-0': !!isCollapsed, 'btn-outline-primary': !isCollapsed, 'pr-4 pl-3 mr-2': !isRtl, 'pr-3 pl-4 ml-2': isRtl }"
+    (click)="isCollapsed = !isCollapsed" [attr.aria-expanded]="!isCollapsed" aria-controls="filter-collapse">
+    <i class="fas fa-filter" [ngClass]="{ 'fa-times-circle': !isCollapsed }"></i>
+    {{ (!isCollapsed ? 'Portal.Ideo.Table.Filters.Hide' : 'Portal.Ideo.Table.Filters.Show') | translate}}
+    <div *ngIf="!!appliedFilterCount" class="filter-badge position-absolute text-white f-10">
+      {{ appliedFilterCount }}
+    </div>
+  </button>
+  <ideo-button *ngFor="let btn of buttons" [button]="btn" [hidden]="!!isCollapsed && !forceCollapse" class="mt-auto">
+  </ideo-button>
+  <ideo-button *ngIf="forceCollapse" [button]="applyBtn" [hidden]="!forceCollapse" class="mt-auto pl-2"></ideo-button>
+</div>
+
+<form [formGroup]="group" class="row" [ngClass]="{ 'd-flex': !isCollapsed || forceCollapse }"
+  (ngSubmit)="applyFilters(true)" [ngbCollapse]="isCollapsed || forceCollapse">
+  <ng-container *ngFor="let col of columns">
+    <ng-container *ngIf="!col.filter || (!!col.filter && col.filter.filter != false)" [tableFilter]="col.filter"
+      [column]="col" [group]="group">
+    </ng-container>
+  </ng-container>
+  <ideo-button *ngIf="!forceCollapse" [button]="applyBtn" [hidden]="!!isCollapsed" class="ml-auto mr-4"></ideo-button>
+
+  <!-- <div class="d-flex justify-content-end ml-auto pb-3 col-sm-6 col-lg-3 col-xl-3">
+    <ideo-button *ngFor="let btn of buttons" [button]="btn"></ideo-button>
+  </div> -->
+</form>

@@ -1,0 +1,10 @@
+<span
+  *ngIf="!!status"
+  class="d-inline-flex align-items-center label f-12 text-white status-label text-truncate {{ status.styleClass }}"
+  data-toggle="tooltip"
+  [title]="status.label"
+>
+  <i *ngIf="!!status.icon" class="{{ status.icon }} mr-1"></i>
+  {{ status.label }}
+</span>
+<span *ngIf="!status">{{ !!col.parsedData ? col.parsedData(item[col.field]) : item[col.field] }}</span>

@@ -1,0 +1,48 @@
+<div *ngIf="!!config && !!group" [ngClass]="{
+    'form-group': mode < 2,
+    'mb-3': !wrapStyleClass && mode < 2,
+    invalid: control?.touched && !control?.valid && !control?.disabled
+  }" [class]="wrapStyleClass" [hidden]="!visible || config?.type == 'hidden'">
+  <!-- 'd-none col-0': !visible || config?.type == 'hidden', -->
+  <ng-container *ngIf="mode === 0">
+    <label *ngIf="config.label" [for]="id" [class]="config.labelStyleClass">
+      <span *ngIf="showLabel">
+        {{ config.label | translate}}
+      </span>
+      <i *ngIf="!!isRequired" class="fas fa-star-of-life text-danger mt-1 ml-1"
+        style="font-size: 5px; vertical-align: top"></i>
+    </label>
+    <ng-container [ngTemplateOutlet]="actual"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="mode === 1">
+    <div class="row">
+      <label *ngIf="config.label" [for]="id" class="col-sm-2 col-form-label {{ config.labelStyleClass }}">
+        {{ config.label | translate}}</label>
+      <div class="col-sm-10">
+        <ng-container [ngTemplateOutlet]="actual"></ng-container>
+      </div>
+    </div>
+  </ng-container>
+  <ng-container *ngIf="mode === 2">
+    <ng-container [ngTemplateOutlet]="actual"></ng-container>
+  </ng-container>
+  <ng-container *ngIf="mode === 3">
+    <ng-container [ngTemplateOutlet]="template" [ngTemplateOutletContext]="{$implicit:actual,config:config,id:id}">
+    </ng-container>
+  </ng-container>
+</div>
+
+<ng-template #actual>
+  <div class="row" *ngIf="!!config && !!group">
+    <div class="col position-relative">
+      <ng-container #formContainer [dynamicField]="config" [type]="type" [group]="group"
+        (setVisibility)="setVisibility($event)" [id]="id" [(control)]="control">
+      </ng-container>
+
+      <ideo-validation-messages [control]="control" [filedLabel]="config?.label"
+        *ngIf="!!config?.validation?.length || !!config?.asyncValidation?.length" [messages]="config?.errorMessages"
+        [takeOne]="config.controlType != 'group'" [autoShowErrors]="config.autoShowErrors">
+      </ideo-validation-messages>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,11 @@
+<div [formGroup]="group" class="input-group">
+  <input type="text" maxlength="1" [placeholder]="(filter.placeholder || filter.label) | translate" class="form-control"
+    [ngClass]="filter?.inputStyle" formControlName="value"
+    (keyup)="!!group?.controls['value'].valid && keyUp($event)"
+    />
+  <div class="input-group-append">
+    <ideo-select [showPlaceholder]="false" [options]="comparisonOptions" placeholder="Operator"
+      formControlName="matchMode">
+    </ideo-select>
+  </div>
+</div>

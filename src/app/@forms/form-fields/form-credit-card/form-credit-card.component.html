@@ -1,0 +1,50 @@
+<div *ngIf="hasCustomer && !disabled" class="d-flex justify-content-between align-items-center">
+    <p translate class="alert alert-warning my-0 mr-3 d-flex justify-content-start align-items-baseline">
+        <i class="fas fa-exclamation-circle mr-1"></i>
+        <b translate class="mr-2"> Portal.Common.Warning </b>
+        Portal.Forms.CreditCard.Warning.ImmediateChange
+    </p>
+</div>
+<div *ngIf="!disabled" class="d-flex align-items-center">
+    <h5 translate>
+        Portal.Customers.Form.Steps.Table.Columns.PaymentMethodDetails
+    </h5>
+    <button class="btn btn-primary m-3" (click)="addCredit()" translate> Portal.Forms.CreditCard.AddCard</button>
+</div>
+
+<ul class="d-flex px-0 row" style="list-style-type:none;">
+    ֿ <li *ngFor="let i of items; let index = index" [ngClass]="config?.inputStyleClass || 'col-3'">
+        <div style="width: 100%; padding-top: 5%;
+        padding-bottom: 10%;" class="d-flex justify-content-between px-4 my-3 my-image image-background cover"
+            style="border-radius: 1.5rem; background-image: url('{{ image(i) }}');">
+            <div class="text-white">
+                <div style="font-size: 1.8rem;">
+                    <div> {{ i?.name }}</div>
+                    <div class="pt-4"> {{fixCardNumber(i)}} </div>
+                </div>
+                <div class="pt-5" style="font-size: 1.2rem;"
+                    [ngStyle]="{visibility: !hasExpiration(i) ?  'hidden' : 'unset' }">
+                    <div>Exp.</div>
+                    <div> {{ fixCardExpiration(i?.cardexpiration) }} </div>
+                </div>
+            </div>
+            <div *ngIf="getButtons(i) as validButtons" class="d-flex justify-content-start align-items-start">
+                <div *ngIf="validButtons?.length" class="menu-dropdown" dropdown [placement]="'bottom left'"
+                    container="#dropdown-container-{{ id }}-{{ index }}">
+                    <div dropdownToggle id="dropdown-container-{{ id }}-{{ index }}">
+                        <img src="assets/icons/edit-glow-round.svg"
+                            style="background-color: #f1f4f8; border-radius: 50%; padding: 0.1em"
+                            [name]="'more-horizontal'" [class]="'icon-md'" />
+                    </div>
+                    <div *dropdownMenu class="dropdown-menu dropdown-menu-right py-2">
+                        <button class="dropdown-item" (click)="!!mi.click && mi.click(i)"
+                            [hidden]="(!!mi.hidden && mi.hidden(i)) || false" *ngFor="let mi of validButtons">
+                            <prx-icon [icon]="mi?.icon" class="mr-2"> </prx-icon>
+                            {{ mi.label | translate }}
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </li>
+</ul>

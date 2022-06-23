@@ -1,0 +1,29 @@
+.icon-xs {
+  width: 12px;
+  height: 12px;
+}
+
+.icon-sm {
+  width: 18px;
+  height: 18px;
+}
+
+.icon-md {
+  width: 24px;
+  height: 24px;
+}
+
+.icon-lg {
+  width: 36px;
+  height: 36px;
+}
+
+.icon-xl {
+  width: 72px;
+  height: 72px;
+}
+
+.white{
+  transition: filter .1s ease-in-out;
+  filter: brightness(0) invert(1);
+}

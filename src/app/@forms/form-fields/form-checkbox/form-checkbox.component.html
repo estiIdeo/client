@@ -1,0 +1,7 @@
+<ideo-checkbox
+  (checkedChange)="!!config.onChange && config.onChange($event, control)"
+  [formControl]="group?.controls[config?.name]"
+  [id]="id"
+  [label]="config?.data?.checkboxLabel | translate"
+>
+</ideo-checkbox>

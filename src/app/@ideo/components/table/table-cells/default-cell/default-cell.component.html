@@ -1,0 +1,33 @@
+<span *ngIf="!!isTranslate; else default">
+  {{
+  (!!col.parsedFullData
+  ? col.parsedFullData(item)
+  : !!col.parsedData
+  ? col.parsedData(item[col.field])
+  : !!col.parsedData$
+  ? (col.parsedData$(item[col.field]) | async)
+  : item[col.field]) | translate
+  }}
+</span>
+<ng-template #default>
+  <span *ngIf="!col.parsedHtmlData; else html">
+    {{
+    !!col.parsedFullData
+    ? col.parsedFullData(item)
+    : !!col.parsedData
+    ? col.parsedData(item[col.field])
+    : !!col.parsedData$
+    ? (col.parsedData$(item[col.field]) | async)
+    : item[col.field]
+    }}
+  </span>
+</ng-template>
+<ng-template #html>
+  <span (click)="col?.onClick ? col.onClick(item) : null" [innerHTML]="
+      col.parsedFullData || col.parsedData
+        ? col.parsedFullData
+          ? col.parsedHtmlData(col.parsedFullData(item))
+          : col.parsedHtmlData(col.parsedData(item[col.field]))
+        : col.parsedHtmlData(item[col.field])
+    "></span>
+</ng-template>

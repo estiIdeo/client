@@ -1,0 +1,103 @@
+<div ngbDropdown [placement]="placement"  (openChange)="isOpen =$event" [autoClose]="'outside'" class="dropdown" [display]="'dynamic'">
+  <ng-container *ngTemplateOutlet="body; context:{aOptions : asyncOptions | async}"></ng-container>
+  <ng-template #body let-aOptions="aOptions">
+    <ng-container>
+      <ng-container *ngIf="!showIconToggle else iconToggle">
+        <button type="button"
+          class="{{ buttonStyleClass }} form-control d-flex justify-content-between align-items-center" [id]="id"
+          [disabled]="!!disabled" (click)="scrollEnd()" ngbDropdownToggle
+          *ngIf="!queryFilters || !lazyOptions || !isOpen || !!selectedKeys?.length">
+          <ng-container *ngIf="!!queryElement?.value || !!getSelected?.length; else defaultLabel">
+            <ng-container *ngTemplateOutlet="labels; context:{aOptions : aOptions}">
+            </ng-container>
+          </ng-container>
+        </button>
+      </ng-container>
+      <ng-template #iconToggle>
+        <button ngbDropdownToggle type="button"
+          class="{{ buttonStyleClass }} form-control d-flex justify-content-between align-items-center" [id]="id"
+          [disabled]="!!disabled" [class.dropdown-toggle]="false" (click)="scrollEnd()">
+          <i class="fas fa-chevron-down toggler"></i>
+        </button>
+      </ng-template>
+      <input type="text" autofocus #queryElement
+        [hidden]="!lazyOptions || !!selectedKeys?.length || (!!lazyOptions && !isOpen)"
+        placeholder="Search {{ label(true) | translate }}" class="form-control search-query"
+        (keyup)="queryChanged($event)"
+        (click)="$event.preventDefault() && $event.stopPropagation() && $event.stopImmediatePropagation()" />
+      {{ autofocus(queryElement)}}
+      <div *ngIf="!lazyOptions" ngbDropdownMenu [attr.aria-labelledby]="id" class="py-0 my-0 shadow multi-dropdown-div">
+        <div *ngFor="let option of options; let i = index" ngbDropdownItem class="px-2 py-1"
+          [ngClass]="{ active: !!selectedKeys[!!dataKey ? option.value[dataKey] : option.value] }"
+          (click)="optionClicked(option)">
+          <div class="custom-control custom-checkbox">
+            <input type="checkbox" class="custom-control-input" id="multiselctcheckbox-{{ id }}-{{ i }}"
+              [checked]="!!selectedKeys[!!dataKey ? option.value[dataKey] : option.value]" />
+            <label class="custom-control-label multi-select-text" for="multiselctcheckbox-{{ id }}-{{ i }}"
+              (click)="$event.stopPropagation()">
+              {{ option.label | translate }}
+            </label>
+          </div>
+        </div>
+      </div>
+      <div *ngIf="!!lazyOptions" ngbDropdownMenu  [attr.aria-labelledby]="id" class="py-0 my-0 shadow multi-dropdown-div" >
+        <cdk-virtual-scroll-viewport #vsv style="height: 100px" (scrolledIndexChange)="nextBatch($event, null)"
+          [itemSize]="30" *ngIf="aOptions">
+          <div *cdkVirtualFor="let option of aOptions; let i = index; trackBy: trackByIdx"
+            class="px-2 py-1 virtual-scroll" ngbDropdownItem (click)="optionClicked(option)"
+            [ngClass]="{ active: !!selectedKeys[!!dataKey ? option.value[dataKey] : option.value] }">
+            <div class="custom-control custom-checkbox">
+              <input type="checkbox" class="custom-control-input" id="multiselctcheckbox-{{ id }}-{{ i }}"
+                [checked]="!!selectedKeys[!!dataKey ? option.value[dataKey] : option.value]" />
+              <img [src]="option.icon | imageId: true" class="list-icon" *ngIf="!!option.icon" alt="" />
+              <label class="custom-control-label multi-select-text text-overflow"
+                for="multiselctcheckbox-{{ id }}-{{ i }}" (click)="$event.stopPropagation()">
+                {{ option.label | translate }}
+                <ng-container *ngIf="!!option.title" class="description">
+                  <small class="text-muted">{{ option.title }}</small>
+                </ng-container>
+              </label>
+            </div>
+          </div>
+        </cdk-virtual-scroll-viewport>
+        <span class="total-items text-muted">{{ totalItems | number }} matches</span>
+      </div>
+    </ng-container>
+  </ng-template>
+</div>
+
+
+<!-- labels container -->
+<ng-template #labels let-aOptions="aOptions">
+  <ng-container [ngSwitch]="!!parsedDynamicComponent">
+    <div *ngSwitchCase="true">
+      <ng-container *ngTemplateOutlet="dynamicComponent ; context:{aOptions : aOptions}"></ng-container>
+    </div>
+    <div *ngSwitchDefault>
+      <ng-container *ngTemplateOutlet="defaultLabel"> </ng-container>
+    </div>
+  </ng-container>
+</ng-template>
+
+<!-- default label -->
+<ng-template #defaultLabel>
+  {{(showSelectPrefix && !value?.length ? ('Portal.Common.Select' | translate) : '')}} {{
+  label() | translate }}
+</ng-template>
+<!-- label dynamic component template -->
+<ng-template #dynamicComponent let-aOptions="aOptions">
+  <div style="width: 200%;">
+    <ul class="d-flex p-0 m-0 flex-wrap" style=" list-style-type: none; transform: scale(0.5); transform-origin: left;">
+      <li *ngFor="let picker of value" class="rounded-pill mx-1 py-1 d-flex align-items-center" style="
+      padding: 0 2rem;  border: solid 1px #a5b2bf;
+      background-color: #f1f4f8;">
+        <prx-dynamic-component class="w-100"
+          *ngIf="parsedDynamicComponent((selectedOption | filter : {value : picker})[0] ) as dynamicComponent"
+          [dynamicComponent]="dynamicComponent">
+        </prx-dynamic-component>
+        <img class="pl-3" src="assets/icons/remove.svg"
+          (click)="$event.preventDefault();optionClicked({value : picker})" alt="">
+      </li>
+    </ul>
+  </div>
+</ng-template>

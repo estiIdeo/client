@@ -1,0 +1,10 @@
+<ng-container *ngIf="(!!col.parsedFullData
+ ? col.parsedFullData(item)
+ : !!col.parsedData
+ ? col.parsedData(item[col.field])
+ : !!col.parsedData$
+ ? (col.parsedData$(item[col.field]) | async)
+ : item[col.field]) as sku">
+    {{ sku }}
+    <i class="fa fa-barcode"></i>
+</ng-container>

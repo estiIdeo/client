@@ -1,0 +1,35 @@
+<ng-container *ngIf="!!itemCache; else loading">
+  <a [routerLink]="col.href && col.href(item[col.field], item)" [target]="col?.data?.blank ? '_blank' : '_self'"
+    [ngClass]="col?.styleClass" [ngbTooltip]="col.tooltip" [style]="!col?.href ? 'cursor: default;' : ''">
+    <ng-container *ngIf="!!col.parsedDynamicComponent; else notDynamicComponent">
+      <prx-dynamic-component
+        [dynamicComponent]="col.parsedDynamicComponent(!!col?.parsedData ? col.parsedData(itemCache,item , col.field): itemCache)">
+      </prx-dynamic-component>
+    </ng-container>
+
+    <ng-template #notDynamicComponent>
+      <ng-container *ngTemplateOutlet="!!col.parsedHtmlData ? html :  regular"> </ng-container>
+    </ng-template>
+
+    <ng-template #regular>
+      <ng-container *ngIf="(!!col.parsedData
+    ? col.parsedData(itemCache)
+    : !!col.parsedData$
+    ? (col.parsedData$(itemCache) | async)
+    : itemCache) as data; else loading">
+        {{ data | translate }}
+      </ng-container>
+
+    </ng-template>
+    <ng-template #html>
+      <span (click)="col?.onClick ? col.onClick(item) : null"
+        [innerHTML]="(col.parsedData ? col.parsedHtmlData(col.parsedData(itemCache)) : col.parsedHtmlData(itemCache) | safeHtml : saveHtmlType )"></span>
+    </ng-template>
+  </a>
+</ng-container>
+
+<ng-template #loading>
+  <div class="fa-1x" *ngIf="!hideLoader">
+    <i class="fas fa-circle-notch fa-spin"></i>
+  </div>
+</ng-template>

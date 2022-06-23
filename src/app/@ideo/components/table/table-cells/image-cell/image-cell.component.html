@@ -1,0 +1,29 @@
+<div class="d-flex justify-content-center align-items-center">
+  <div
+    *ngIf="((!!col.parsedFullData && col.parsedFullData(item)) || (!!col.parsedData && col.parsedData(item[col.field]))  ) || item[col.field] as value ;else acronym">
+
+    <img #img [ngbPopover]="popContent" [placement]="getPlacement(img)" *ngIf="!isStatic" [hidden]="!value" [src]="value | imageId: true"
+      class="img-fluid img-thumbnail" style="max-height: 33px" (click)="onClick(value)" />
+    <img *ngIf="!!isStatic" [hidden]="!value" [src]="value" class="img-fluid" style="height: 30px;max-height: 33px" />
+    <ng-template #popContent>
+      <div class="d-flex justify-content-center align-items-center" [style.width.vw]="width"
+        [style.height]="'auto'">
+        <img [style.width.vw]="width" [src]="value | imageId" class="img-fluid" alt="">
+      </div>
+    </ng-template>
+  </div>
+
+  <ng-template #acronym>
+    <ng-template #popContent>
+      <span *ngIf="getAcronym(item) as acronymItem"  class="btn-circle text-info"
+        style="min-width: 100% !important; min-height: 100% !important; "
+        [style.backgroundColor]="acronymItem?.colorHash | colorHash">
+        {{ ((acronymItem?.name)?.split(' ')) | acronym }}
+      </span>
+    </ng-template>
+    <span #acr [ngbPopover]="popContent" [placement]="getPlacement(acr)" [popoverClass]="'w-300 h-300'" *ngIf="getAcronym(item) as acronymItem"
+      class="acronym btn-circle text-info" [style.backgroundColor]="acronymItem?.colorHash | colorHash">
+      {{ ((acronymItem?.name)?.split(' ')) | acronym }}
+    </span>
+  </ng-template>
+</div>

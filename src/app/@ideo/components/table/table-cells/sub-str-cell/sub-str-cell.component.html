@@ -1,0 +1,7 @@
+<span
+  [ngbTooltip]="!!col.parsedData ? col.parsedData(item[col.field]) : item[col.field]"
+  triggers="click"
+  class="pointer"
+>
+  {{ (!!col.parsedData ? col.parsedData(item[col.field]) : item[col.field]) | subStr }}
+</span>

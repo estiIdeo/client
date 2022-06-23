@@ -1,0 +1,8 @@
+{{
+(!!col.parsedFullData
+? col.parsedFullData(item)
+: !!col.parsedData
+? col.parsedData(item[col.field])
+: item[col.field]
+) | date: 'dd/MM/yy'
+}}

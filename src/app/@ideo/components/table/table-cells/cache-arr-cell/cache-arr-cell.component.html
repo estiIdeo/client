@@ -1,0 +1,14 @@
+<ng-container *ngIf="!!itemCaches" [ngClass]="col?.styleClass">
+  <!-- [target]="item?.data?.blank ? '_blank' : '_self'" -->
+  <a *ngFor="let itemCache of itemCaches" [routerLink]="href(itemCache)" [ngClass]="itemCache?.styleClass"
+    [ngbTooltip]="itemCache?.tooltip" [style]="(!!href(itemCache)) ? 'cursor: default;' : ''">
+    <span *ngIf="!col.parsedHtmlData; else html" (click)="col?.onClick ? onClick(itemCache) : null">
+      {{ !!col?.cacheDataArr$ ? (col.cacheDataArr$(itemCache) | async) : itemCache.value }}
+    </span>
+    <ng-template #html>
+      <span (click)="col?.onClick ? onClick(itemCache) : null" [innerHTML]="
+          col.parsedHtmlData(!!col?.cacheDataArr$ ? (col.cacheDataArr$(itemCache) | async) : itemCache.value)
+        "></span>
+    </ng-template>
+  </a>
+</ng-container>

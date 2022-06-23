@@ -1,0 +1,15 @@
+<div class="notifications" [ngStyle]="isRtl ? { left: '1.5rem' } : { right: '1.5rem' }">
+  <ul class="">
+    <li *ngFor="let notification of notifications" class="{{ notification.type }} border p-3">
+      <button type="button" class="toast-close-button" role="button" (click)="close(notification)">×</button>
+      <i class="{{ notification.type }}"></i>
+      <h5 style="color: #fff" translate>Portal.Notifications.NotificationType.{{ notification?.type }}</h5>
+      <p
+        [innerHTML]="notification?.content"
+        [translateParams]="notification.translateParamObject | translateParams"
+        translate
+        class="mb-0"
+      ></p>
+    </li>
+  </ul>
+</div>

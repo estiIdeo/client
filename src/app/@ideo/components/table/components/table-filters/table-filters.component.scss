@@ -1,0 +1,45 @@
+@import "import";
+
+:host::ng-deep {
+  .input-group {
+    .input-group-append {
+      .dropdown-toggle {
+        position: relative;
+        max-width: 30px;
+        color: transparent;
+        border-top-left-radius: 0;
+        border-bottom-left-radius: 0;
+
+        &::after {
+          color: #000;
+          position: absolute;
+          left: 40%;
+          transform: translateX(-40%);
+        }
+      }
+    }
+  }
+}
+
+.filter-badge {
+  // background: linear-gradient(-135deg,#1de9b6 0,#1dc4e9 100%);
+  background: $color-3;
+  border-radius: 50%;
+  height: 1.25rem;
+  width: 1.25rem;
+  right: -0.625rem;
+  top: -0.625rem;
+  font-size: 0.75rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 600;
+  font-stretch: normal;
+  font-style: normal;
+  line-height: 1.25;
+  letter-spacing: normal;
+  text-align: left;
+  color: #ffffff;
+  box-shadow: 0 2px 12px 0 rgba(165, 178, 191, 0.2);
+  z-index: auto;
+}

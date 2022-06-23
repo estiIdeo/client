@@ -1,0 +1,31 @@
+<ng-container *ngIf="config?.type == 'separator'; else label">
+  <div [class]="config?.inputStyleClass || 'col-12 d-block'">
+    <hr />
+  </div>
+</ng-container>
+
+<ng-template #label>
+  <ng-container *ngIf="config?.type == 'label'; else regular">
+    <div [class]="config?.inputStyleClass || 'col-12 d-block'">
+      <label>{{ group?.controls[config?.name]?.value }}</label>
+    </div>
+  </ng-container>
+</ng-template>
+
+<ng-template #regular>
+  <input [attr.disabled]="disabled" *ngIf="!config.data?.rows" [type]="config?.type"
+    class="form-control {{ config?.inputStyleClass }}" [ngClass]="{ 'is-invalid': !!control.touched && !control.valid }"
+    [id]="id" [step]="config.data?.step || 1" [placeholder]="config?.placeholder || '' | translate"
+    [formControl]="group?.controls[config?.name]" (input)="onChange($event.target.value)"
+    (keyup)="!!group?.controls[config?.name].valid && keyUp($event)" [prxKeyfilter]="config.data?.keyFilter" />
+
+  <textarea *ngIf="!!config.data?.rows" [formControl]="group?.controls[config?.name]" [id]="id"
+    [cols]="config.data?.cols" [rows]="config.data.rows" (input)="onChange($event.target.value)"
+    [placeholder]="config?.placeholder || '' | translate" class="form-control {{ config?.inputStyleClass }}"
+    [ngClass]="{ 'is-invalid': !!control.touched && !control.valid }"
+    (keyup)="!!group?.controls[config?.name].valid && keyUp($event)" ></textarea>
+
+  <span *ngIf="config.data?.autoGenerator" class="auto-generator" (click)="autoGeneratorClicked()">
+    {{ config.data.autoGeneratorLabel }}
+  </span>
+</ng-template>

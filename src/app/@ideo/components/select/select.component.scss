@@ -1,0 +1,22 @@
+.dropdown {
+
+  .dropdown-div {
+    max-height: 300px;
+    overflow-y: auto;
+    overflow-x: hidden;
+  }
+}
+
+.clear-btn {
+  top: 50%;
+  right: 35px;
+  transform: translateY(-50%);
+  line-height: 1.1;
+  cursor: pointer;
+}
+
+.toggler {
+  color: black;
+  left: 31%;
+  position: absolute;
+}

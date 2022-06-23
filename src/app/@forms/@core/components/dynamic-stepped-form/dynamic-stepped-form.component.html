@@ -1,0 +1,106 @@
+<form class="dynamic-form {{ formCssClass }} w-100" novalidate (ngSubmit)="handleSubmit($event)" *ngIf="!!form">
+  <div class="row {{ formRowCssClass }}">
+    <div class="col-12 d-flex justify-content-start align-items-center">
+      <ideo-form-stepper
+        #cdkStepper
+        (selectionChange)="stepChanged($event.previouslySelectedIndex, $event.selectedIndex)"
+        *ngIf="!!config?.length"
+        [bodyClass]="bodyClass"
+        class="d-block w-100"
+      >
+        <cdk-step
+          *ngFor="let step of config; let i = index; let isLastStep = last"
+          [editable]="!step?.disable"
+          [stepControl]="step"
+          [optional]="false"
+        >
+          <ng-template cdkStepLabel>
+            <span [ngClass]="{ error: (selected?.interacted || dyn?.form?.touched) && dyn?.form?.invalid }">
+              {{ step.title | translate }}
+              <span class="badge badge-danger badge-pill" *ngIf="selectedInd != i && !!stepErrors[i]">
+                {{ stepErrors[i] }}
+              </span>
+            </span>
+          </ng-template>
+
+          <ideo-dynamic-form-group
+            #dyn
+            [config]="step.group"
+            [(form)]="form.controls['forms'].controls[i + '']"
+            [validation]="validation"
+            [errorMessages]="errorMessages"
+            [showSubmitButton]="false"
+          >
+          </ideo-dynamic-form-group>
+
+          <ng-content #sidebar></ng-content>
+
+          <ng-container [ngSwitch]="footerMode">
+            <footer class="step-navigation-bar" *ngSwitchCase="0">
+              <button
+                class="btn btn-light btn-circle nav-button"
+                cdkStepperPrevious
+                [disabled]="i == 0 || isPrevDisable"
+              >
+                <i class="fas" [ngClass]="{'fa-arrow-left': !isRtl, 'fa-arrow-right': isRtl}"></i>
+              </button>
+
+              <button
+                class="btn btn-light btn-circle nav-button"
+                *ngIf="!isLastStep"
+                cdkStepperNext
+                [disabled]="dyn?.form?.invalid || isNextDisable"
+              >
+                <i class="fas" [ngClass]="{'fa-arrow-left': isRtl, 'fa-arrow-right': !isRtl}"></i>
+              </button>
+              <button *ngIf="!!form" type="submit" class="btn btn-primary" [disabled]="!validForm">
+                Portal.Common.SubmitBtn
+              </button>
+            </footer>
+            <footer class="wizard-navigation d-flex justify-content-end align-items-center" *ngSwitchCase="1">
+              <div class="navigation-bullets rounded shadow-sm d-flex justify-content-end align-items-center">
+                <div class="nav-steps-number mr-2">
+                  {{ 'Portal.Common.Wizard.Steps' | translate: { step: i + 1, total: config.length } }}
+                </div>
+
+                <button
+                  class="btn btn-light btn-sm btn-circle nav-button mr-2"
+                  cdkStepperPrevious
+                  [disabled]="i === 0 || isPrevDisable"
+                >
+                  <i class="fas" [ngClass]="{'fa-arrow-left': !isRtl, 'fa-arrow-right': isRtl}"></i>
+                </button>
+
+                <div class="nav nav-steps mr-2">
+                  <span
+                    *ngFor="let step of config; let b = index"
+                    class="bullet"
+                    [ngClass]="{ active: i == b, done: i > b }"
+                  >
+                    <i class="bullet-dot"></i>
+                  </span>
+                </div>
+
+                <button
+                  class="btn btn-light btn-sm btn-circle nav-button"
+                  *ngIf="!isLastStep"
+                  cdkStepperNext
+                  [disabled]="isNextDisable"
+                >
+                  <i class="fas" [ngClass]="{'fa-arrow-left': isRtl, 'fa-arrow-right': !isRtl}"></i>
+                </button>
+              </div>
+
+              <button *ngIf="!!form" type="submit" class="btn btn-primary" [disabled]="!validForm" translate>
+                Portal.Common.SubmitBtn
+              </button>
+              <!-- <button type="button" class="btn btn-primary" (click)="log(form)" translate>
+                Portal.Common.Test
+              </button> -->
+            </footer>
+          </ng-container>
+        </cdk-step>
+      </ideo-form-stepper>
+    </div>
+  </div>
+</form>

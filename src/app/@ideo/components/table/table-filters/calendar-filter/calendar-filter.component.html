@@ -1,0 +1,16 @@
+<div class="position-relative">
+  <div class="position-absolute f-10 date-filter-placeholder">{{ (filter.placeholder || filter.label) | translate}}
+  </div>
+  <div [formGroup]="group" class="input-group">
+    <input #input class="form-control" [ngClass]="filter?.inputStyle" [type]="filter.inputType || 'datetime-local'"
+      [placeholder]="filter.placeholder | translate" formControlName="value" [id]="id"
+      (change)="!!filter.onChange && filter.onChange(group.controls['value'])" 
+      (keyup)="!!group?.controls['value'].valid && keyUp($event)"
+      />
+    <div class="input-group-append">
+      <ideo-select [showPlaceholder]="false" [options]="filter.options || comparisonOptions" placeholder="Operator"
+        formControlName="matchMode">
+      </ideo-select>
+    </div>
+  </div>
+</div>

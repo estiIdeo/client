@@ -1,0 +1,7 @@
+<div [formGroup]="group">
+  {{ (filter.label || filter.placeholder) | translate}}
+  <div class="custom-control custom-switch">
+    <input type="checkbox" class="custom-control-input" [id]="id" formControlName="value" />
+    <label class="custom-control-label" [for]="id"></label>
+  </div>
+</div>

@@ -1,0 +1,1 @@
+export type ValueOfType<S> = S[keyof S]

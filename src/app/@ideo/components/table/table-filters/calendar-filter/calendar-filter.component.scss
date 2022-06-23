@@ -1,0 +1,36 @@
+:host::ng-deep {
+  .input-group .input-group-append .dropdown-toggle {
+    -webkit-touch-callout: none;
+    /* iOS Safari */
+    -webkit-user-select: none;
+    /* Safari */
+    -khtml-user-select: none;
+    /* Konqueror HTML */
+    -moz-user-select: none;
+    /* Old versions of Firefox */
+    -ms-user-select: none;
+    /* Internet Explorer/Edge */
+    user-select: none;
+    /* Non-prefixed version, currently
+                                  supported by Chrome, Edge, Opera and Firefox */
+  }
+}
+
+.date-filter-placeholder {
+  transform: translateY(-100%);
+  letter-spacing: 0.5px;
+  padding-bottom: 2px;
+}
+
+input[placeholder] {
+  text-overflow: ellipsis;
+}
+
+::-moz-placeholder {
+  text-overflow: ellipsis;
+}
+
+/* firefox 19+ */
+input:-moz-placeholder {
+  text-overflow: ellipsis;
+}

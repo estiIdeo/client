@@ -1,0 +1,11 @@
+<span [class]="iconClass">
+  <fa-icon *ngIf="useFontAwesome; else ideo" [icon]="icon" [size]="size">
+  </fa-icon>
+  <ng-template #ideo>
+    <img *ngIf="useIdeo; else useFeather" [class]="'icon-' + (size||'') + (white ? ' white' : '')"
+      src="assets/icons/{{ ideoIcon }}" />
+  </ng-template>
+  <ng-template #useFeather>
+    <i-feather [name]="icon" [class]="'icon-' + size + ' ' + icon?.toString()"></i-feather>
+  </ng-template>
+</span>

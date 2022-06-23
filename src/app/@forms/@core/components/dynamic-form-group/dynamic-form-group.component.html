@@ -1,0 +1,29 @@
+<form class="dynamic-form {{ formCssClass }}" *ngIf="!!form" [formGroup]="form" novalidate
+  (ngSubmit)="handleSubmit($event)">
+  <div class="row {{ formRowCssClass }}">
+    <ng-container *ngFor="let field of config | permitted">
+      <ideo-dynamic-form-control class="col {{ field.config.styleClass }}" #formGroupEl
+        *ngIf="!!field?.config?.name && !!form.controls[field.config.name]" [dynamicControl]="field" [group]="form"
+        [template]="template" (onSubmit)="submit()">
+      </ideo-dynamic-form-control>
+    </ng-container>
+    <div class="col-12 position-relative" [ngClass]="{ 'mb-3': !!errorMessages }">
+      <ideo-validation-messages *ngIf="!!validation?.length" [messages]="errorMessages" [control]="form">
+      </ideo-validation-messages>
+    </div>
+  </div>
+  <ng-container *ngIf="!!showSubmitButton && !!form">
+    <button *ngIf="!submitting; else submittingIndicator" type="submit" class="btn btn-primary" [disabled]="!form.valid"
+      translate>
+      {{ submitText || 'Portal.Common.SubmitBtn' }}
+    </button>
+    <ng-template #submittingIndicator>
+      <button class="btn btn-primary" [disabled]="true">
+        <i class="fas fa-circle-notch fa-spin"></i>
+      </button>
+    </ng-template>
+  </ng-container>
+  <button *ngIf="!!showCancelButton && !!form" type="button" class="btn btn-info" (click)="cancel()" translate>
+    {{ cancelText || 'Portal.Common.CancelBtn' }}
+  </button>
+</form>

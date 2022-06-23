@@ -1,0 +1,7 @@
+:host::ng-deep {
+  ideo-table-filters {
+    > button.filter-collapse {
+      top: -15px !important;
+    }
+  }
+}

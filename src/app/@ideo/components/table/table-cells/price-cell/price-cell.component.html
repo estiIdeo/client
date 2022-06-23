@@ -1,0 +1,25 @@
+<div *ngIf="
+    !!col.parsedFullData
+    ? col.parsedFullData(item)
+    : !!col.parsedData
+    ? col.parsedData(item[col.field])
+    : !!col.parsedData$
+    ? (col.parsedData$(item[col.field]) | async)
+    : item[col.field]
+     as value; else notPrice" class="d-flex align-items-center justify-content-start text-center"
+  style="font-size: 0.85rem">
+  <div class="d-flex align-center justify-content-center val-indicator">
+    <span>{{ value | currency: 'ILS' }}</span>
+  </div>
+  <ng-container *ngIf="!freeVat">
+    <span class="mx-3" style=" border-right: 1px solid #869ab8; height: 100%;"> &nbsp;</span>
+    <div class="vat-indicator" *ngIf="!!vat">
+      <span class="d-block">{{ value * vat | currency: 'ILS' }}</span>
+      <small class="d-block text-muted small" translate> Portal.Ideo.Table.Cells.Price.PriceWithVat </small>
+    </div>
+  </ng-container>
+</div>
+
+<ng-template #notPrice>
+  <small translate> Portal.Ideo.Table.Cells.Price.NoPrice </small>
+</ng-template>

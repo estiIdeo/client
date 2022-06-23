@@ -1,0 +1,21 @@
+<div class="form-group d-flex justify-content-between align-items-center" *ngIf=" !!config?.name">
+  <div [formGroup]="group" class="d-none">
+    <input [formControlName]="config?.name" />
+  </div>
+  <div *ngIf="!!form" [formGroup]="form" class="">
+    <input id="{{ id + '-price' }}" currencyFormatter [formControlName]="priceControlName"
+      class="form-control {{ config?.inputStyleClass }}"
+      [ngClass]="{ 'is-invalid': !!priceControl.touched && !control.valid }" (focus)="$event.target.select()"
+      [placeholder]="config?.placeholder || '' | translate" (input)="onInput($event?.target?.value,false)" />
+    <!-- (keyup)="keyUp($event?.target?.value, false, $event.keyCode)" -->
+    <label for="{{ id + '-price' }}" translate> Portal.Forms.Filed.Price.Title </label>
+  </div>
+  <div *ngIf="!!form" [formGroup]="form" class="" [ngClass]="{'d-none' :  !!data?.hideVat}">
+    <input id="{{ id + '-vatPrice' }}" currencyFormatter class="form-control {{ config?.inputStyleClass }} "
+      [ngClass]="{ 'is-invalid': !!priceControl.touched && !control.valid }" [formControlName]="vatControlName"
+      [placeholder]="config?.placeholder || '' | translate" (focus)="$event.target.select()"
+      (input)="onInput($event?.target?.value,true)" />
+    <!-- (keyup)="keyUp($event?.target?.value, true, $event.keyCode)" -->
+    <label for="{{ id + '-vatPrice' }}" translate> Portal.Forms.Filed.VatPrice.Title </label>
+  </div>
+</div>

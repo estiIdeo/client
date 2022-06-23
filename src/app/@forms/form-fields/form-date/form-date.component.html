@@ -1,0 +1,4 @@
+<ideo-calendar [formControl]="control" [isDisabled]="config?.disabled" [id]="id" (onWriteValue)="writeValue($event)"
+  (onChangeEvent)="!!config.onChange && config.onChange($event, control)" [type]="config.type || 'datetime-local'"
+  [inputClass]="config?.inputStyleClass">
+</ideo-calendar>

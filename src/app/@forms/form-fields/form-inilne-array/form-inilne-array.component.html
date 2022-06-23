@@ -1,0 +1,4 @@
+<div class="row" *ngFor="let ctrl of control.controls">
+    <ideo-dynamic-form-control *ngFor="let field of config.data.formConfig" [dynamicControl]="field" [group]="ctrl">
+    </ideo-dynamic-form-control>
+</div>

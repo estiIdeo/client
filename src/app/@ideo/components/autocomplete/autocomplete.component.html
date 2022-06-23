@@ -1,0 +1,6 @@
+<ng-template #rt let-r="result" let-t="term">
+    <prx-icon *ngIf="r?.icon"></prx-icon>
+    <ngb-highlight [result]="r.label" [term]="t"></ngb-highlight>
+</ng-template>
+<input id="typeahead-template" type="text" class="form-control" [disabled]="disabled" [(ngModel)]="modal"
+    [ngbTypeahead]="search" [resultTemplate]="rt" popupClass="z-index-master" [inputFormatter]="formatter" />

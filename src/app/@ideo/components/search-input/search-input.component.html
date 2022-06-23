@@ -1,0 +1,11 @@
+<div [ngClass]="{ 'card card-sm' : asCard  , searchCard : !hideSearch }">
+    <div class="card-body has-search  no-gutters align-items-center px-0" [ngClass]="styleClass">
+        <span *ngIf="!hideSearch" class="fa fa-search form-control-feedback"></span>
+        <div class="col">
+            <input [style]="styleString" (keydown)="onKeydownEvent($event.target.value)"
+                (input)="valueChange?.emit($event.target.value)" (change)="onChange.emit($event.target.value)"
+                [(ngModel)]="value" class="form-control form-control-lg form-control-borderless" type="search"
+                [placeholder]="placeholder">
+        </div>
+    </div>
+</div>

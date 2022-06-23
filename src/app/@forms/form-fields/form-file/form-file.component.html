@@ -1,0 +1,106 @@
+<div *ngIf="!config?.data?.newStyle" class="input-group">
+  <div class="custom-file">
+    <input
+      type="file"
+      #fileInput
+      class="custom-file-input"
+      [accept]="acceptedTypes"
+      [id]="id"
+      (change)="fileUploaded($event.target.files)"
+      [disabled]="!!config.disabled || (!!config.disabled$ && (config.disabled$ | async))"
+    />
+    <input type="hidden" [formControl]="group?.controls[config?.name]" />
+    <label class="custom-file-label text-truncate" [for]="id">{{ label }}</label>
+    <button *ngIf="!!control.value" class="btn btn-default remove-file-btn" (click)="removeFile()">
+      <i class="fas fa-times"></i>
+    </button>
+  </div>
+
+  <div class="input-group-append" *ngIf="!!config.data?.getTemplateUrl">
+    <button
+      class="btn btn-outline-secondary"
+      type="button"
+      id="downloadTemplate{{ id }}"
+      [disabled]="!!config.disabled || (!!config.disabled$ && (config.disabled$ | async))"
+      (click)="downloadTemplate()"
+    >
+      Template
+    </button>
+  </div>
+</div>
+
+<div *ngIf="!!config?.data?.newStyle" class="d-flex flex-wrap">
+  <div name="file-description" class="col-6 col-sm-12" *ngIf="!!config.data.textByValue">
+    {{ (!!config.data.textByValue ? group?.value?.label : null) | translate }}
+  </div>
+  <div style="width: 100%" *ngFor="let i of items; let index = index" [ngClass]="config?.inputStyleClass">
+    <div
+      class="py-3 px-4 my-image image-background cover"
+      style="border-radius: 8px; background-image: url('{{ i | imageId: true }}');"
+    >
+      <div class="d-flex justify-content-end align-items-end">
+        <div
+          class="menu-dropdown"
+          dropdown
+          [placement]="'bottom left'"
+          container="#dropdown-container-{{ id }}-{{ index }}"
+        >
+          <div dropdownToggle id="dropdown-container-{{ id }}-{{ index }}">
+            <img
+              src="assets/icons/edit-glow-round.svg"
+              style="background-color: #f1f4f8; border-radius: 50%; padding: 0.1em"
+              [name]="'more-horizontal'"
+              [class]="'icon-md'"
+            />
+          </div>
+          <div *dropdownMenu class="dropdown-menu dropdown-menu-right py-2">
+            <button
+              class="dropdown-item"
+              (click)="!!mi.click && mi.click(i)"
+              [hidden]="(!!mi.hidden && mi.hidden(i)) || false"
+              *ngFor="let mi of buttons"
+            >
+              <i class="{{ iconClass(mi?.icon) }} mr-2"></i>
+              {{ mi.label | translate }}
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    name="upload-box"
+    *ngIf="config?.data.multiple || isEmptyForm"
+    class="d-flex flex-wrap justify-content-start align-items-center col-6 col-sm-12"
+    style="width: 100%"
+    [ngClass]="config?.inputStyleClass"
+  >
+    <label
+      [for]="id"
+      class="flex-grow"
+      style="min-width: 100%; cursor: pointer"
+      [ngClass]="{ 'flex-grow': !config?.data.multiple || !uploadImageId?.length }"
+    >
+      <div class="text-center py-3 px-4 my-image card" style="border-radius: 8px; background-color: #f1f4f8;">     
+        <img src="assets/icons/upload.svg" width="30px" height="30px" alt="" />
+        <div>
+          {{ config?.data?.title | translate }}
+        </div>
+        <div>
+          {{ subTitle | translate }}
+        </div>
+      </div>
+    </label>
+    <input
+      type="file"
+      [multiple]="config?.data.multiple"
+      #fileInput
+      hidden
+      class="w-0"
+      [accept]="acceptedTypes"
+      [id]="id"
+      (change)="fileUploaded($event.target.files)"
+      [disabled]="!!config.disabled || (!!config.disabled$ && (config.disabled$ | async))"
+    />
+  </div>
+</div>

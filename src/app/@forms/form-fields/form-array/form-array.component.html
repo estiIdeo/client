@@ -1,0 +1,155 @@
+<div class="dynamic-field form-input" [formGroup]="group">
+  <div [formArrayName]="config.name">
+    <div class="d-flex justify-content-between align-items-center">
+      <h5 class="f-16" *ngIf="config.data?.title as title">
+        {{ title }}
+      </h5>
+    </div>
+
+    <!-- <ng-container *ngIf="data?.filters?.length">
+      <ng-container *ngTemplateOutlet="filters">
+      </ng-container>
+    </ng-container> -->
+    <ng-container *ngIf="data?.useGlobalFilter">
+      <ng-container *ngTemplateOutlet="globalFilter">
+      </ng-container>
+    </ng-container>
+
+
+    <hr class="m-0 mb-3" *ngIf="!!config.data.showSeparator" />
+    <table class="table" [ngClass]="config.data.tableStyleClass">
+      <ng-container *ngIf="!config.data.hideTableHead">
+        <thead *ngIf="config.data.formConfig | notHidden as ctrls">
+          <tr *ngIf="!!ctrls?.length">
+            <th *ngFor="let field of ctrls" [style]="field?.config?.style" class="input-column">
+              {{ field.config.label | translate }}
+            </th>
+            <th *ngIf="!config.data?.disableAddAndRemoveMode" style="max-width: 40em"
+              class="d-flex pr-0 justify-content-end align-item-center">
+              <div class="btn-group">
+                <button *hasPermit="[config.data.addPermission ,!config.data?.showAddingMode]"
+                  class="btn btn-secondary btn-sm" (click)="addConfig()" type="button"
+                  [disabled]="!!config.data?.disabled || (!!config.data?.disabled$ && (config.data?.disabled$ | async))">
+                  <span *ngIf="config.data?.addLabel as label; else iconTmpl">
+                    {{ label }}
+                  </span>
+                  <ng-template #iconTmpl>
+                    <i class="ml-auto fas fa-plus"></i>
+                  </ng-template>
+                </button>
+                <button class="btn btn-sm" *ngIf="!config.data?.addLabel && !config.data?.hideShowAndHideListButton"
+                  (click)="folded = !folded" [ngClass]="{ 'btn-danger': !folded, 'btn-info': !!folded }">
+                  <i class="ml-auto fas fa-minus" [ngClass]="{ 'fa-plus': !!folded }"></i>
+                </button>
+              </div>
+            </th>
+          </tr>
+        </thead>
+      </ng-container>
+      <tbody *ngIf="!folded">
+        <ng-container
+          *ngFor="let ctrl of (control | formArrayControlFilter : globalFilterQuery); let i = index; let odd = odd;"
+          [formGroup]="ctrl">
+          <tr *ngIf="(config.data.formConfig | notHidden) as ctrls"
+            [ngClass]="{ 'table-secondary': !!config?.data?.isRoot && !!odd }">
+            <td *ngFor="let field of ctrls" [ngClass]="{ 'd-none': field.config?.type == 'hidden' }">
+              <ideo-dynamic-form-control [dynamicControl]="field" [group]="ctrl" [wrapStyleClass]="'mb-0'"
+                [mode]="!!config.data.inputsMode || config.data.inputsMode === 0 ? config.data.inputsMode : 2">
+              </ideo-dynamic-form-control>
+            </td>
+            <td *hasPermit="[config.data?.removePermission, !config.data?.disableAddAndRemoveMode]" class="align-top"
+              style="max-width: 40em">
+              <button class="btn btn-md form-btn" (click)="removeConfig(i)" type="button">
+                <img style="height: 17px;" src="assets/icons/trash.svg" alt="">
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="!!ctrl && !ctrl.valid && config?.data?.groupValidations?.length">
+            <td class="px-0 pb-1 border-0 group-validation-wrapper"
+              [colSpan]="(config.data.formConfig | notHidden).length">
+              <ideo-validation-messages [control]="ctrl" [filedLabel]="config?.label"
+                [messages]="config?.data?.errorMessages">
+              </ideo-validation-messages>
+            </td>
+          </tr>
+
+          <ng-container *ngIf="config.data.nestedConfig">
+            <tr [ngClass]="{ 'table-secondary': !!config?.data?.isRoot && !!odd }">
+              <td></td>
+              <td *ngFor="let field of config.data.nestedConfig"
+                [ngClass]="{ 'd-none': field.config?.type == 'hidden' }"
+                [colSpan]="(config.data.formConfig | notHidden).length">
+                <ideo-dynamic-form-control [dynamicControl]="field" [group]="ctrl" [mode]="2">
+                </ideo-dynamic-form-control>
+              </td>
+            </tr>
+          </ng-container>
+          <!-- dynamic array -->
+          <ng-container *ngIf="!!config.data.dynamicConfig">
+            <tr *ngFor="let item of config.data.data; let i = index"
+              [ngClass]="{ 'table-secondary': !!config?.data?.isRoot && !!odd }">
+              <td *ngFor="let field of config.data.dynamicConfig(i, item)"
+                [ngClass]="{ 'd-none': field.config?.type == 'hidden' }"
+                [colSpan]="(config.data.formConfig | notHidden).length">
+                <ideo-dynamic-form-control [dynamicControl]="field" [group]="ctrl" [mode]="2">
+                </ideo-dynamic-form-control>
+              </td>
+            </tr>
+          </ng-container>
+        </ng-container>
+
+        <ng-container *ngIf="!!config.data?.showAddingMode && !!addingCtrl">
+          <tr class="border-top">
+            <td class="p-2" [colSpan]="config.data.formConfig.length + 1"></td>
+          </tr>
+          <tr class="add-row bg-light-blue">
+            <td *ngFor="let field of config.data.formConfig" [ngClass]="{ 'd-none': field.config?.type == 'hidden'   }"
+              class="pt-2">
+              <ideo-dynamic-form-control [dynamicControl]="field" [group]="addingCtrl" [wrapStyleClass]="'mb-0'"
+                [mode]="!!config.data.inputsMode || config.data.inputsMode ===0 ? config.data.inputsMode : 2">
+              </ideo-dynamic-form-control>
+            </td>
+            <td class="align-bottom">
+              <button class="btn btn-primary btn-md form-btn" (click)="!!addingCtrl?.valid && saveToForm()"
+                type="button" [disabled]="!addingCtrl?.valid">
+                {{config.data.addLabel || 'Add' | translate}}
+              </button>
+            </td>
+          </tr>
+          <tr *ngIf="!!addingCtrl && !addingCtrl?.valid && config?.data?.groupValidations?.length">
+            <td class="px-0 pb-1 border-0 group-validation-wrapper"
+              [colSpan]="(config.data.formConfig | notHidden).length">
+              <ideo-validation-messages [filedLabel]="config?.label" *ngIf="!!addingCtrl" [control]="addingCtrl"
+                [messages]="config?.data?.errorMessages">
+              </ideo-validation-messages>
+            </td>
+          </tr>
+        </ng-container>
+        <tr>
+          <ideo-validation-messages [filedLabel]="config?.label" style="font-size: 1.5rem;"
+            *ngIf="!!config?.validation?.length || !!config?.asyncValidation?.length" [control]="control"
+            [messages]="config?.errorMessages" [autoShowErrors]="true">
+          </ideo-validation-messages>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+
+<ng-template #globalFilter>
+  <div class="row">
+    <label for="globalFilter" class="d-block col-12"> Filter results</label>
+    <ideo-dynamic-form-control id="globalFilter" *ngIf="globalFilterDyn?.config?.name"
+      [class]="globalFilterDyn?.config?.styleClass" (onChange)="globalFilterQuery =  $event"
+      [dynamicControl]="globalFilterDyn" [group]="group" [mode]="2">
+    </ideo-dynamic-form-control>
+  </div>
+</ng-template>
+
+<!-- <ng-template #filters>
+  <ideo-dynamic-form-group [(form)]="group.controls.filters" [config]="data?.filters" [showSubmitButton]="true"
+    [showCancelButton]="true" cancelText="Reset" [submitText]="'Apply'" (onSubmit)="applyFilters($event)"
+    (onCancel)="resetFilters()">
+  </ideo-dynamic-form-group>
+</ng-template> -->

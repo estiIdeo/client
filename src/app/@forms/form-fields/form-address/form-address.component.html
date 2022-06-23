@@ -1,0 +1,5 @@
+<div [formGroup]="group" class="form-group">
+    <input type="text" [formControlName]="config?.name" class="form-control" (keydown.enter)="$event.preventDefault()"
+        [placeholder]="'Portal.Agencies.Sidebar.Zones.Form.SearchAddress' | translate" autocorrect="off" autocapitalize="off" spellcheck="off" type="text"
+        (blur)="onBlur()" #search>
+</div>

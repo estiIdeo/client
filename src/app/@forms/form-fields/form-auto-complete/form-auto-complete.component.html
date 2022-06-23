@@ -1,0 +1,8 @@
+<ideo-autocomplete [id]="id" [formControl]="control"
+  (valueChanged)="!!config.onChange && config.onChange($event, control)" [dataKey]="config.data?.dataKey"
+  [disabled]="config?.disabled || control?.disabled" [allowAnyString]="config?.data?.allowAnyString"
+  [optionLimit]="config?.data?.optionLimit"
+  [options]="!!config.optionsArr$ ? (config.optionsArr$ | async) : config.optionsArr">
+  <!-- [resolveLabel]="resolveLabel" -->
+  <!-- [optionsFetcher]="optionsFetcher" -->
+</ideo-autocomplete>
