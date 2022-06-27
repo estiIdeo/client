@@ -19,9 +19,18 @@ export class TagFormService {
           name: 'name',
           type: 'text',
           styleClass: 'col-12',
+          placeholder:'Tag Name'
         },
       },
-      
+      {
+        type: FormTextComponent,
+        config: {
+          name: 'color',
+          type: 'color',
+          styleClass: 'col-12',
+          placeholder:'Tag Color'
+        },
+      },
     );
     return form;
   }
