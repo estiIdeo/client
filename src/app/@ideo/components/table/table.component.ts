@@ -12,7 +12,6 @@ import {
   ViewChild,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR, FormGroup, FormBuilder } from '@angular/forms';
-import { SelectItem } from '../../../@forms/@core/interfaces';
 import { StringHelperService } from '../../../@ideo/infrastructure/services/string-helper.service';
 import { LazyLoadEvent } from '../../../@ideo/components/table/events/lazy-load.event';
 import { TableColumn } from '../../../@ideo/components/table/models/table-column';
@@ -21,15 +20,15 @@ import { TableService } from './services/table.service';
 import { takeWhile } from 'rxjs/operators';
 import { SortEvent } from '../../../@ideo/components/table/events/sort.event';
 import { ButtonItem } from '../../core/models/button-item';
-import { PermitPipe } from '../../infrastructure/pipes/has-permit.pipe';
 import { SortService } from './services/sort.service';
 import { Observable } from 'rxjs';
-import { DynamicFormControl } from '../../../@forms/@core/interfaces/dynamic-form-control';
 import { ChangeDetectorRef, OnChanges } from '@angular/core';
-import { FormTextComponent } from '../../../@forms/form-fields/form-text/form-text.component';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { TableRowGroup } from './models/row-group';
-import { RtlService } from '../../../@shared/services/rtl.service';
+import { DynamicFormControl } from '@app/@forms/@core/interfaces/dynamic-form-control';
+import { SelectItem } from './models/select-item';
+import { FormTextComponent } from '@app/@forms/form-fields';
+import { RtlService } from '@app/@shared/services/rtl.service';
 
 @Component({
   selector: 'ideo-table',
@@ -67,7 +66,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges, Control
   public onTouch: any = (): any => null;
   public rowControls: { [index: number]: DynamicFormControl[] } = {};
   @Input() public set columns(cols: TableColumn[]) {
-    this._columns = this.rolePipe.transform(cols);
+   // this._columns = this.rolePipe.transform(cols);
   }
   public get columns(): TableColumn[] {
     return this._columns;
@@ -79,7 +78,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges, Control
 
   public _buttons: ButtonItem[] = [];
   @Input() public set buttons(btnArr: ButtonItem[]) {
-    this._buttons = this.rolePipe.transform(btnArr);
+ //   this._buttons = this.rolePipe.transform(btnArr);
   }
 
   public availableButtons(item: any): ButtonItem[] {
@@ -200,7 +199,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges, Control
 
   constructor(
     public service: TableService,
-    private rolePipe: PermitPipe,
+    //private rolePipe: PermitPipe,
     private cd: ChangeDetectorRef,
     private stringHelper: StringHelperService,
     private fb: FormBuilder,
@@ -331,7 +330,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges, Control
     this.service.sortDirection = direction;
   }
 
-  export(all: boolean, type: 'Excel' | 'Csv' = 'Excel'): void {
+  /*export(all: boolean, type: 'Excel' | 'Csv' = 'Excel'): void {
     // if (this.account.isAdminAndDomainIsSelected(true)) {
     let currentState = this.service.getTableState();
     if (all) {
@@ -360,7 +359,7 @@ export class TableComponent implements OnInit, AfterViewInit, OnChanges, Control
     this.onLazyLoad.emit({ ...currentState });
     // }
   }
-
+*/
   public rowHover(index: number, item: any, enter: boolean) {
     this.onRowHover.next({ index: index, item: item, hoverMode: !!enter ? 'enter' : 'leave' });
   }

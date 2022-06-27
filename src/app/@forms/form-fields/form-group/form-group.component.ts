@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
-import { Field, FieldConfig } from '../../@core/interfaces';
 import { FormGroupData } from './form-group';
 import { FormGroup } from '@angular/forms';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig } from '@app/@forms/@core/interfaces';
 
 @Component({
   selector: 'ideo-form-group',

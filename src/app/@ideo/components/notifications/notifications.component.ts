@@ -1,6 +1,6 @@
 import { Component, OnInit, OnDestroy } from '@angular/core';
-import { RtlService } from '@app/@shared/services/rtl.service';
 import { takeWhile } from 'rxjs/operators';
+import { RtlService } from '@app/@shared/services/rtl.service';
 import { Notification } from './notifications.service';
 import { NotificationsService } from './notifications.service';
 

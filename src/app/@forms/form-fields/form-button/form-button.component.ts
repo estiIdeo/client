@@ -1,8 +1,9 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig } from '@app/@forms/@core/interfaces';
 import { FormTextData } from '../form-text/form-text';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
-import { Field, FieldConfig } from '../../@core/interfaces';
+
 
 @Component({
   selector: 'ideo-form-button',

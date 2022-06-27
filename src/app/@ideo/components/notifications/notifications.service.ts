@@ -1,7 +1,7 @@
 import { HttpErrorResponse, HttpResponse } from '@angular/common/http';
 import { Injectable } from '@angular/core';
+import { ErrorMessages } from '@app/@shared/models/error-messages.model';
 import { Observable, Subject } from 'rxjs';
-import { ErrorMessages } from '../../../@shared/models/error-messages.model';
 
 export enum ReqMethod {
   PUT = 'Update',

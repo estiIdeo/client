@@ -1,10 +1,11 @@
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { HttpClient, HttpHeaders, HttpParams } from '@angular/common/http';
-import { environment } from '../../../../environments/environment';
-import { ErrorMessages } from '../../../@shared/models/error-messages.model';
-import { IntelligenceKeys } from '../../../@shared/types/IntelligenceKeys.type';
-import { translateType } from '../../../@shared/types/translate.type';
+import { ErrorMessages } from '@app/@shared/models/error-messages.model';
+import { environment } from '@env/environment';
+import { IntelligenceKeys } from '@app/@shared/types/IntelligenceKeys.type';
+import { translateType } from '@app/@shared/types/translate.type';
+
 
 @Injectable({
   providedIn: 'root',

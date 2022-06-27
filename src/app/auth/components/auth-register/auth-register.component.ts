@@ -4,7 +4,7 @@ import { Router, ActivatedRoute } from '@angular/router';
 
 import { faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs/operators';
-import { BaseFormComponent } from 'src/app/@core/base/base-form-component';
+import { BaseFormComponent } from '@app/@core/base/base-form-component';
 
 @Component({
   selector: 'prx-auth-register',

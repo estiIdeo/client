@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
-import { Field, FieldConfig } from '../../@core/interfaces';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig } from '@app/@forms/@core/interfaces';
 import { FormGroup } from '@angular/forms';
 
 @Component({

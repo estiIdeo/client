@@ -1,6 +1,6 @@
 import { AsyncValidatorFn, FormGroup, ValidatorFn } from '@angular/forms';
+import { DynamicFormControl } from '@app/@forms/@core/interfaces/dynamic-form-control';
 import { Observable } from 'rxjs';
-import { DynamicFormControl } from '../../@forms/@core/interfaces/dynamic-form-control';
 
 export interface PageFormConfig<T = any> {
   groupConfig: GroupConfig;

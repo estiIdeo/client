@@ -1,9 +1,9 @@
 import { Injectable, EventEmitter, Type, Injector } from '@angular/core';
-import { BaseHttpService } from '../../@core/base/base-http-service';
 import { of, Observable } from 'rxjs';
 import { map, tap } from 'rxjs/operators';
-import { LazyLoadEvent } from '../../@ideo/components/table/events/lazy-load.event';
-import { BaseParentHttpService } from 'src/app/@core/base/base-parent-http-service';
+import { BaseParentHttpService } from '@app/@core/base/base-parent-http-service';
+import { LazyLoadEvent } from '@app/@ideo/components/table/events/lazy-load.event';
+import { BaseHttpService } from '@app/@core/base/base-http-service';
 
 export interface CacheModel<T = any> {
   service: Type<BaseHttpService<T>> | Type<BaseParentHttpService<number, T>>;

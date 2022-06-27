@@ -2,11 +2,11 @@ import { ChangeDetectionStrategy, ChangeDetectorRef, Component, forwardRef, Inpu
 import { NG_VALUE_ACCESSOR } from '@angular/forms';
 import { Observable, OperatorFunction } from 'rxjs';
 import { debounceTime, map } from 'rxjs/operators';
+import { RtlService } from '@app/@shared/services/rtl.service';
 import { StringHelperService } from '../../infrastructure/services/string-helper.service';
 import { SelectComponent } from '../select/select.component';
 import { SelectItem } from '../table/models/select-item';
-import { PermissionsService } from '../../infrastructure/services/permissions.service';
-import { RtlService } from '@app/@shared/services/rtl.service';
+
 
 @Component({
   selector: 'ideo-autocomplete',
@@ -32,8 +32,8 @@ export class AutocompleteComponent extends SelectComponent {
   // @Input() private resolveLabel: (val: any) => Promise<string> | string;
   // @Input() private optionsFetcher: (query: string) => Observable<SelectItem[]>;
 
-  constructor(stringHelper: StringHelperService, cd: ChangeDetectorRef, permissions: PermissionsService, rtlService: RtlService) {
-    super(stringHelper, cd, permissions, rtlService);
+  constructor(stringHelper: StringHelperService, cd: ChangeDetectorRef, rtlService: RtlService) {//, permissions: PermissionsService
+    super(stringHelper, cd, rtlService);
 
   }
 

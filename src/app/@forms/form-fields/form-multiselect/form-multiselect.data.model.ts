@@ -1,7 +1,7 @@
-import { TableFilter } from '../../../@ideo/components/table/models/table-filter';
-import { DynamicComponentModel } from '../../../@shared/components/dynamic-component/dynamic.component.model';
 import { Subject } from 'rxjs';
-import { SelectItem } from '../../../@ideo/components/table/models/select-item';
+import { SelectItem } from '@app/@forms/@core/interfaces';
+import { DynamicComponentModel } from '@app/@shared/components/dynamic-component/dynamic.component.model';
+import { TableFilter } from '@app/@ideo/components/table/models/table-filter';
 export class FormMultiSelectDataModel<T = SelectItem> {
     lazyOptions?: TableFilter['lazyOptions'];
     queryFilters?: TableFilter['queryFilters'];

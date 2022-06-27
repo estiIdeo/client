@@ -1,8 +1,9 @@
 import { Component, ChangeDetectionStrategy } from '@angular/core';
 import { FormGroup } from '@angular/forms';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig } from '@app/@forms/@core/interfaces';
 import { FormCheckbox } from './form-checkbox';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
-import { Field, FieldConfig } from '../../@core/interfaces';
+
 
 @Component({
   selector: 'ideo-form-checkbox',

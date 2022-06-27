@@ -1,18 +1,18 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
-import { Field, FieldConfig } from '../../@core/interfaces';
+
 import { FileCategory, FormFile } from './form-file';
 import { FormGroup } from '@angular/forms';
 import { FilesService } from '../../@core/services/files.service';
 import { environment } from '@env/environment';
-import { ButtonItem } from '../../../@ideo/core/models/button-item';
 import { IconDefinition } from '@fortawesome/fontawesome-svg-core';
 import { faTrash, faExpand } from '@fortawesome/free-solid-svg-icons';
 import { distinctUntilChanged, takeWhile } from 'rxjs/operators';
 import { range } from 'lodash';
-import { FullScreenModalComponent } from '../../../@shared/components/full-screen-modal/full-screen-modal.component';
 import { BsModalService } from 'ngx-bootstrap/modal';
-import { untilDestroyed } from '../../../@core/until-destroyed';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig } from '@app/@forms/@core/interfaces';
+import { ButtonItem } from '@app/@ideo/core/models/button-item';
+import { untilDestroyed } from '@core/until-destroyed';
 
 @Component({
   selector: 'ideo-form-file',
@@ -84,10 +84,10 @@ export class FormFileComponent extends BaseFieldDirective implements Field<FormF
 
 
   public openInFullscreen(id: number) {
-    this.modalService.show(FullScreenModalComponent, {
-      initialState: { mediaItem: { mediaId: id }, title: this.config?.label },
-      class: 'modal-xl modal-dialog-centered',
-    });
+    // this.modalService.show(FullScreenModalComponent, {
+    //   initialState: { mediaItem: { mediaId: id }, title: this.config?.label },
+    //   class: 'modal-xl modal-dialog-centered',
+    // });
   }
 
   public pushImage(item: any) {

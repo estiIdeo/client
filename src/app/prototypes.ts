@@ -1,8 +1,8 @@
 import { SelectItem } from './@ideo/components/table/models/select-item';
-import { DynamicFormControl } from './@forms/@core/interfaces/dynamic-form-control';
 import { IntelligenceKeys } from './@shared/types/IntelligenceKeys.type';
 import { translateType } from './@shared/types/translate.type';
 import { serverTranslateType } from './@shared/types/serverTranslate.type';
+import { DynamicFormControl } from './@forms/@core/interfaces/dynamic-form-control';
 declare global {
   interface Array<T = DynamicFormControl> {
     toSelectItem(filter?: (o: T) => boolean): SelectItem[];

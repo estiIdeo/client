@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
-import { Field, FieldConfig } from '../../@core/interfaces';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig } from '@app/@forms/@core/interfaces';
+import { TimezoneService } from '@app/@ideo/infrastructure/services/timezone.service';
 import { FormDate } from './form-date';
-import { TimezoneService } from '../../../@ideo/infrastructure/services/timezone.service';
 
 @Component({
   selector: 'ideo-form-date',

@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { BaseComponent } from '../../../../../@core/base/base-component';
+import { BaseComponent } from '@app/@core/base/base-component';
 import { SelectItem } from '../../models/select-item';
 import { TableCell } from '../../models/table-cell';
 import { TableColumn } from '../../models/table-column';

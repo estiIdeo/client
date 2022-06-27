@@ -11,17 +11,17 @@ import {
   ElementRef,
 } from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
-import { SelectItem } from '../table/models/select-item';
-import { StringHelperService } from '../../infrastructure/services/string-helper.service';
-import { LazyLoadEvent, FilterObject } from '../table/events/lazy-load.event';
 import { Observable, BehaviorSubject, Subscription, Subject } from 'rxjs';
 import { tap, take, debounceTime, finalize, takeUntil } from 'rxjs/operators';
 import { CdkVirtualScrollViewport } from '@angular/cdk/scrolling';
-import { IPagedList } from '../../../@shared/models/paged-list.response';
 import { OnInit } from '@angular/core';
-import { RtlService } from '../../../@shared/services/rtl.service';
 import { Placement } from '@ng-bootstrap/ng-bootstrap';
-import { FormMultiSelectDataModel } from 'src/app/@forms/form-fields/form-multiselect/form-multiselect.data.model';
+import { FormMultiSelectDataModel } from '@app/@forms/form-fields/form-multiselect/form-multiselect.data.model';
+import { FilterObject, LazyLoadEvent } from '../table/events/lazy-load.event';
+import { SelectItem } from '../table/models/select-item';
+import { IPagedList } from '@app/@shared/models/paged-list.response';
+import { StringHelperService } from '@app/@ideo/infrastructure/services/string-helper.service';
+import { RtlService } from '@app/@shared/services/rtl.service';
 
 @Component({
   selector: 'ideo-multiselect',
@@ -64,7 +64,7 @@ export class MultiselectComponent implements ControlValueAccessor, AfterViewInit
 
   public ngOnInit() {
     this.fullOptionSetter?.pipe(takeUntil(this.ended))?.subscribe(res => {
-      if (!!res?.includes?.length) { this.selectedOption = this.selectedOption?.concat(res?.includes).removeDuplicate() }
+      if (!!res?.includes?.length) { this.selectedOption = this.selectedOption?.concat(res?.includes) }//.removeDuplicate() }
       if (!!res?.exclude?.length) { this.selectedOption = this.selectedOption?.filter(i => res?.exclude?.includes(i)) }
       this.cd.markForCheck()
     })

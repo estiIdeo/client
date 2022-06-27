@@ -15,10 +15,10 @@ import { Directionality } from '@angular/cdk/bidi';
 import { faLongArrowAltLeft, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { BehaviorSubject } from 'rxjs';
 import { takeWhile } from 'rxjs/operators';
-import { StepFormGroup } from '../../../../@shared/models/wizard-form.config';
 import { StepperService } from '../../services/stepper.service';
 import { range } from 'lodash';
 import { RtlService } from '../../../../@shared/services/rtl.service';
+import { StepFormGroup } from '@app/@shared/models/wizard-form.config';
 
 
 @Component({
@@ -119,18 +119,18 @@ export class DynamicSteppedFormComponent extends CdkStepper implements OnInit {
         prev[i] = 0;
         return prev;
       }, {});
-      this.form = this.fb.group({
-        forms: this.fb.array([
-          ...this.config.map((z, i) =>
-            this.fb.group(
-              this.config[i].group.reduce((prev, curr, i) => {
-                prev[curr.config.name] = curr.config?.value;
-                return prev;
-              }, {})
-            )
-          ),
-        ]),
-      }) as StepFormGroup;
+      // this.form = this.fb.group({
+      //   forms: this.fb.array([
+      //     ...this.config.map((z, i) =>
+      //       this.fb.group(
+      //         this.config[i].group.reduce((prev, curr, i) => {
+      //           prev[curr.config.name] = curr.config?.value;
+      //           return prev;
+      //         }, {})
+      //       )
+      //     ),
+      //   ]),
+      // }) as StepFormGroup;
 
       this.stepperService.form = this.form;
     });

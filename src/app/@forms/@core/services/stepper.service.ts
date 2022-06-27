@@ -2,7 +2,6 @@ import { Injectable, OnDestroy } from '@angular/core';
 import { Subject, Observable } from 'rxjs';
 import { FormControl } from '@angular/forms';
 import { first, timeout, takeWhile, tap, distinctUntilChanged } from 'rxjs/operators';
-import { StepFormGroup, StepFormGroupGetRawValue } from '../../../@shared/models/wizard-form.config';
 import { range } from 'lodash';
 import { untilDestroyed } from '../../../@core/until-destroyed';
 
@@ -88,12 +87,12 @@ export class StepperService implements OnDestroy {
     }
   }
   public entityId: number;
-  public form: StepFormGroup;
-  public get formValues(): StepFormGroupGetRawValue {
+  public form: any;
+  public get formValues(): any {
     return this.form?.getRawValue()
   }
   public findFormArrFormControl = (title: string): FormControl => this?.form?.controls.forms?.controls?.find((f) => !!f?.controls?.[title])?.controls?.[title];
-  public findFormArrayValuesObject = (title: string, formValues: StepFormGroupGetRawValue = this.formValues): any => formValues.forms?.find((f: any) => !!f?.[title])?.[title];
+  public findFormArrayValuesObject = (title: string, formValues: any = this.formValues): any => formValues.forms?.find((f: any) => !!f?.[title])?.[title];
   public findFormArrayControlIndex = (title: string): number => this?.form?.controls.forms?.controls?.findIndex((f) => !!f?.controls?.[title])
   constructor() { this.stepChanged.pipe(untilDestroyed(this), distinctUntilChanged(), tap(s => this.currentStep = s)).subscribe() }
 }

@@ -1,6 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { IdeoIconModel } from '../../../@shared/models/ideo-icon.model';
-import { IntelligenceKeys } from '../../../@shared/types/IntelligenceKeys.type';
+import { IdeoIconModel } from '@app/@shared/models/ideo-icon.model';
+import { IntelligenceKeys } from '@app/@shared/types/IntelligenceKeys.type';
+
 
 @Pipe({
   name: 'icon',

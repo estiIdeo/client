@@ -1,12 +1,12 @@
 import { Injectable } from '@angular/core';
 import { TagsModel, AutoTagType } from '../models/tags.model';
 import { HttpClient } from '@angular/common/http';
-import { QueryBuilderService } from '../../@ideo/infrastructure/services/query-builder.service';
-import { BaseParentHttpService } from '../../@core/base/base-parent-http-service';
 import { Observable } from 'rxjs';
-import { ErrorMessages } from '../models/error-messages.model';
 import { shareReplay } from 'rxjs/operators';
-import { LazyLoadEvent } from '../../@ideo/components/table/events/lazy-load.event';
+import { BaseParentHttpService } from '@app/@core/base/base-parent-http-service';
+import { QueryBuilderService } from '@app/@ideo/infrastructure/services/query-builder.service';
+import { LazyLoadEvent } from '@app/@ideo/components/table/events/lazy-load.event';
+import { ErrorMessages } from '../models/error-messages.model';
 
 
 

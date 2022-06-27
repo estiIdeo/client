@@ -4,12 +4,12 @@ import { Router, ActivatedRoute, Params } from '@angular/router';
 import { faCheck, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { faUser, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 import { finalize } from 'rxjs/operators';
-import { BaseFormComponent } from 'src/app/@core/base/base-form-component';
+import { BaseFormComponent } from '@app/@core/base/base-form-component';
 import { Store } from '@ngrx/store';
-import { Login } from 'src/app/state/auth.actions';
+import { Login } from '@app/state/auth.actions';
 import { Observable } from 'rxjs';
-import { IAppState, selectAuthState } from 'src/app/state/auth.state';
-import { User } from 'src/app/models/user';
+import { IAppState, selectAuthState } from '@app/state/auth.state';
+import { User } from '@app/models/user';
 
 @Component({
   selector: 'prx-auth-login',

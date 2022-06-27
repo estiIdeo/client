@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup } from '@angular/forms';
-import { SelectItem } from '../../../../../@forms/@core/interfaces';
 import { TableFilter, TableFilterInput } from '../../../../../@ideo/components/table/models/table-filter';
+import { SelectItem } from '../../models/select-item';
 
 @Component({
   selector: 'prx-text-filter',

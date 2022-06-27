@@ -1,12 +1,13 @@
 import { HttpClient } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { QueryBuilderService } from '../../@ideo/infrastructure/services/query-builder.service';
-import { LazyLoadEvent } from '../../@ideo/components/table/events/lazy-load.event';
+import { LazyLoadEvent } from '@app/@ideo/components/table/events/lazy-load.event';
+import { QueryBuilderService } from '@app/@ideo/infrastructure/services/query-builder.service';
+import { ErrorMessages } from '@app/@shared/models/error-messages.model';
+import { IPagedList } from '@app/@shared/models/paged-list.response';
+import { IntelligenceKeys } from '@app/@shared/types/IntelligenceKeys.type';
+import { translateType } from '@app/@shared/types/translate.type';
+import { environment } from '@env/environment';
 import { Observable } from 'rxjs';
-import { IPagedList } from '../../@shared/models/paged-list.response';
-import { ErrorMessages } from '../../@shared/models/error-messages.model';
-import { IntelligenceKeys } from '../../@shared/types/IntelligenceKeys.type';
-import { translateType } from '../../@shared/types/translate.type';
+
 
 export interface AssignFleetsPatchFuncModel {
   assignFleets: (parentId: number, id: number, fleetsIds: number[], entityName?: IntelligenceKeys<translateType> /** get value as argument */, messages?: ErrorMessages) => Observable<any>

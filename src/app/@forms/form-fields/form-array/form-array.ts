@@ -1,8 +1,8 @@
 import { Observable, Subject } from 'rxjs';
 import { ValidatorFn, FormGroup, AsyncValidatorFn } from '@angular/forms';
-import { DynamicFormControl } from '../../@core/interfaces/dynamic-form-control';
+import { DynamicFormControl } from '@app/@forms/@core/interfaces/dynamic-form-control';
+import { FieldEvent } from '@app/@forms/@core/interfaces';
 // import { DynamicFormStepMode } from '@app/@forms/@core/interfaces';
-import { FieldEvent } from '../../@core/interfaces/events';
 // import { Permission } from '@app/@ideo/infrastructure/permissions/permission';
 
 export type FormArraySetter = { controlIndex?: number | 'add', controlName: string, setter: FieldEvent, control?: FormGroup }

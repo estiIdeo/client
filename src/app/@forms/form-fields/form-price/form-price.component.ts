@@ -1,13 +1,12 @@
 import { Component, OnInit, ChangeDetectorRef, OnDestroy } from '@angular/core';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
 import { FormControl, FormGroup } from '@angular/forms';
-import { Field } from '../../@core/interfaces/field';
 import { FormPriceDataModel } from './from-price-data.model';
-import { FieldConfig } from '../../@core/interfaces/field-config';
 import { VatService } from '../../../@shared/services/vat.service';
 import { takeWhile, debounceTime, take, tap } from 'rxjs/operators';
-import { untilDestroyed } from '../../../@core/until-destroyed';
 import { Subject } from 'rxjs';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig } from '@app/@forms/@core/interfaces';
+import { untilDestroyed } from '../../../@core/until-destroyed';
 
 @Component({
   selector: 'prx-form-price',

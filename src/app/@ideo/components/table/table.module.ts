@@ -38,7 +38,6 @@ import {
 import { IdeoPipesModule } from '../../infrastructure/pipes/pipes.module';
 import { ButtonModule } from '../button/button.module';
 import { TableFiltersComponent } from './components/table-filters/table-filters.component';
-import { LoaderModule } from '../loader/loader.module';
 import { IdeoFormsModule } from '@app/@forms/ideo-forms.module';
 import { FeatherModule } from 'angular-feather';
 import { allIcons } from 'angular-feather/icons';
@@ -50,12 +49,11 @@ import { TranslateModule, TranslatePipe } from '@ngx-translate/core';
 import { IconsModule } from '../../../blocks/icons/icons.module';
 import { IdeoDatePipe } from '../../infrastructure/pipes/ideo-date.pipe';
 import { DynamicComponentModule } from '../../../@shared/components/dynamic-component/dynamic-component.module';
-import { TagsCellComponent } from './table-cells/tags-cell/tags-cell.component';
-import { LocationsCellComponent } from './table-cells/locations-cell/locations-cell.component';
-import { AgmCoreModule } from '@agm/core';
-import { I18nModule } from '../../../i18n/i18n.module';
+// import { AgmCoreModule } from '@agm/core';
+// import { I18nModule } from '../../../i18n/i18n.module';
 import { SkuCellComponent } from './table-cells/sku-cell/sku-cell.component';
 import { FreeSearchFilterComponent } from './table-filters/free-search-filter/free-search-filter.component';
+import { SelectComponent } from '../select/select.component';
 
 const featherIcons = allIcons;
 
@@ -87,8 +85,8 @@ const COMPONENTS = [
   TableFiltersComponent,
   CacheArrCellComponent,
   PriceCellComponent,
-  LocationsCellComponent,
-  TagsCellComponent
+  // LocationsCellComponent,
+  // TagsCellComponent
 ];
 
 @NgModule({
@@ -99,11 +97,11 @@ const COMPONENTS = [
     TranslateModule,
     SelectModule,
     IconsModule,
-    I18nModule,
+    // I18nModule,
     MultiselectModule,
     ButtonModule,
     IdeoPipesModule,
-    LoaderModule,
+    // LoaderModule,
     IdeoFormsModule,
     FormsModule,
     ReactiveFormsModule,
@@ -114,7 +112,7 @@ const COMPONENTS = [
     NgbDatepickerModule,
     BsDropdownModule,
     RouterModule,
-    AgmCoreModule,
+    // AgmCoreModule,
     FeatherModule.pick(featherIcons),
   ],
   exports: [...EXPORTED],

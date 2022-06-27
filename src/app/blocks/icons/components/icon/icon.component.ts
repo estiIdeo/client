@@ -1,9 +1,10 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { IconDefinition } from '@fortawesome/fontawesome-common-types';
 import { SizeProp } from '@fortawesome/fontawesome-svg-core';
-import { BaseComponent } from 'src/app/@core/base/base-component';
-import { IdeoIconModel } from '../../../../@shared/models/ideo-icon.model';
-import { IntelligenceKeys } from '../../../../@shared/types/IntelligenceKeys.type';
+import { BaseComponent } from '@app/@core/base/base-component';
+import { IdeoIconModel } from '@app/@shared/models/ideo-icon.model';
+import { IntelligenceKeys } from '@app/@shared/types/IntelligenceKeys.type';
+
 
 @Component({
   selector: 'prx-icon',

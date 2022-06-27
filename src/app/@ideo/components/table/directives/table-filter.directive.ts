@@ -2,7 +2,7 @@ import { ComponentFactoryResolver, ComponentRef, Directive, Input, OnInit, ViewC
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { TableColumn } from '../models/table-column';
 import { TableFilter, TableFilterInput } from '../models/table-filter';
-import { PermissionsService } from '../../../infrastructure/services/permissions.service';
+// import { PermissionsService } from '../../../infrastructure/services/permissions.service';
 import { TableFilterDic } from '../models/types';
 import { TextFilterComponent } from '../table-filters/text-filter/text-filter.component';
 import { TableFiltersService } from '../services/table-filters.service';
@@ -23,7 +23,7 @@ export class TableFilterDirective implements OnInit {
     private container: ViewContainerRef,
     private fb: FormBuilder,
     private filterService: TableFiltersService,
-    private permissionService: PermissionsService
+    // private permissionService: PermissionsService
   ) { }
 
   ngOnInit(): void {
@@ -113,9 +113,9 @@ export class TableFilterDirective implements OnInit {
       };
     }
     if (!!this.filter && !Array.isArray(this.filter)) {
-      if (this.filter.permission && !this.permissionService.permitted(this.filter.permission)) {
-        return false;
-      }
+      // if (this.filter.permission && !this.permissionService.permitted(this.filter.permission)) {
+      //   return false;
+      // }
 
       if (!this.filter.name) {
         this.filter.name = this.column.field;
@@ -128,9 +128,9 @@ export class TableFilterDirective implements OnInit {
       for (let i = 0; i < filters.length; i++) {
         const filter = filters[i];
 
-        if (filter.permission && !this.permissionService.permitted(filter.permission)) {
-          return false;
-        }
+        // if (filter.permission && !this.permissionService.permitted(filter.permission)) {
+        //   return false;
+        // }
         if (!filter.name) {
           filter.name = this.column.field;
         }

@@ -33,7 +33,7 @@
           </div>
         </th>
         <th
-          *ngFor="let col of columns | permitted"
+          *ngFor="let col of columns "
           [hidden]="!!col.hidden || !!(col.hidden$ | async)"
 
           style="text-align: start"
@@ -42,7 +42,8 @@
           (sort)="onSort($event)"
         >
           {{ col.header | translate }}
-        </th>
+       <!-- | permitted -->
+       </th>
         <th class="p-0" *ngIf="!!buttons && !!buttons.length"></th>
       </tr>
     </thead>
@@ -101,8 +102,9 @@
                       [routerLink]="!!mi.href ? mi.href(item) : null"
                       type="button"
                       [hidden]="false"
-                      *ngFor="let mi of rowGroup.actions | permitted"
+                      *ngFor="let mi of rowGroup.actions "
                     >
+                    <!-- | permitted -->
                       <i class="{{ iconClass(mi?.icon) }} mr-2"></i>
                       {{ mi.label || mi.title | translate }}
                     </button>
@@ -215,7 +217,7 @@
         <ng-container *ngIf="!!loading || !!(loading$ | async); else notFound">
           <tr>
             <td [colSpan]="columns.length + 2" class="py-4">
-              <ideo-loader [template]="'list'" [isLoading]="loading || !!(loading$ | async)" [count]="3"></ideo-loader>
+              <!-- <ideo-loader [template]="'list'" [isLoading]="loading || !!(loading$ | async)" [count]="3"></ideo-loader> -->
             </td>
           </tr>
         </ng-container>

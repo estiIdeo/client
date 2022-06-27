@@ -1,7 +1,6 @@
 import { FormGroup, AbstractControl } from '@angular/forms';
-import { SelectItem } from '../../../@ideo/components/table/models/select-item';
-import { DefaultMasks } from 'src/app/@shared/directives/keyfilter.directive';
-import { FieldConfig } from '../../@core/interfaces';
+import { FieldConfig } from '@app/@forms/@core/interfaces/field-config';
+import { DefaultMasks } from '@app/@shared/directives/keyfilter.directive';
 
 type AutoGeneratorAction = (config: FieldConfig, form: FormGroup) => string | void;
 

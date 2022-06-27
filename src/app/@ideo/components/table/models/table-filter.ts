@@ -1,14 +1,14 @@
 import { Type } from '@angular/core';
 import { FormGroup } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { Permission } from '../../../infrastructure/permissions/permission';
-import { TableColumn } from './table-column';
-import { FilterObject, LazyLoadEvent } from '../events/lazy-load.event';
-import { IPagedList } from '../../../../@shared/models/paged-list.response';
-import { AnyString } from '../../../../@shared/types/any-type.type';
 import { TableFilterDicModel } from './types';
-import { ValueOfType } from '../../../../@shared/types/object-key-values.type';
-import { SelectItem } from 'src/app/@forms/@core/interfaces';
+import { SelectItem } from '@app/@forms/@core/interfaces';
+import { ValueOfType } from '@app/@shared/types/object-key-values.type';
+import { AnyString } from '@app/@shared/types/any-type.type';
+import { FilterObject, LazyLoadEvent } from '../events/lazy-load.event';
+import { IPagedList } from '@app/@shared/models/paged-list.response';
+import { Permission } from '@app/@ideo/infrastructure/permissions/permission';
+import { TableColumn } from './table-column';
 
 
 export interface TableFilter<T = any, D = any> {

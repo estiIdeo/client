@@ -18,8 +18,8 @@ import { LazyLoadEvent } from '../table/events/lazy-load.event';
 import { SelectItem } from '../table/models/select-item';
 //import { PermissionsService } from '../../infrastructure/services/permissions.service';
 import { ElementRef } from '@angular/core';
-import { RtlService } from 'src/app/@shared/services/rtl.service';
-import { IPagedList } from 'src/app/@shared/models/paged-list.response';
+import { RtlService } from '@app/@shared/services/rtl.service';
+import { IPagedList } from '@app/@shared/models/paged-list.response';
 
 @Component({
   selector: 'ideo-select',

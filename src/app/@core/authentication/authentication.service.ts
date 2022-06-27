@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { User } from 'src/app/models/user';
+import { User } from '@app/models/user';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
@@ -8,7 +8,7 @@ import { environment } from 'src/environments/environment';
 })
 export class AuthenticationService {
 
-  private baseUrl = environment.apiUrl;
+  private baseUrl = environment.serverUrl;
   constructor(private _http: HttpClient) { }
 
 

@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { DynamicFormControl } from 'src/app/@forms/@core/interfaces/dynamic-form-control';
-import { FormTextComponent } from 'src/app/@forms/form-fields';
+import { DynamicFormControl } from '@app/@forms/@core/interfaces/dynamic-form-control';
+import { FormTextComponent } from '@app/@forms/form-fields/form-text/form-text.component';
 import { TagModel } from '../../models/tag.model';
 
 @Injectable({

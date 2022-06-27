@@ -74,7 +74,7 @@ export class ImageCellComponent implements OnInit, TableCell {
     if (
       this.col?.data?.openInFullScreen
     ) {
-      this.modalsService.fullScreen(value, this.col?.header)
+      // this.modalsService.fullScreen(value, this.col?.header)
     }
     if (this.col?.onClick) {
       this.col?.onClick(value, this.item[this.col.field])

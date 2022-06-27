@@ -10,6 +10,7 @@ export class TagFormComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
+    alert("ccc");
   }
 
 }

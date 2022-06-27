@@ -10,7 +10,7 @@ import {
   ViewChild,
 } from '@angular/core';
 import { FormBuilder, FormGroup, ValidatorFn } from '@angular/forms';
-import { config } from 'process';
+// import { config } from 'process';
 import { DynamicFormStepMode } from '../../interfaces';
 import { DynamicFormControl } from '../../interfaces/dynamic-form-control';
 

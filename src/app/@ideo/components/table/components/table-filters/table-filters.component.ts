@@ -4,12 +4,13 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { ButtonItem } from '@app/@ideo/core/models/button-item';
 import { TableColumn } from '../../models/table-column';
-import { StorageKeysService } from '../../../../infrastructure/services/storage-keys.service';
 import { LazyLoadEvent } from '../../events/lazy-load.event';
-import { UtilsService } from '../../../../infrastructure/services/utils.service';
 import { faRedo } from '@fortawesome/free-solid-svg-icons';
+import { StorageKeysService } from '@app/@ideo/infrastructure/services/storage-keys.service';
 import { TableService } from '../../services/table.service';
-import { RtlService } from '../../../../../@shared/services/rtl.service';
+import { RtlService } from '@app/@shared/services/rtl.service';
+import { UtilsService } from '@app/@ideo/infrastructure/services/utils.service';
+
 
 @Component({
   selector: 'table-filters',

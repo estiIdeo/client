@@ -4,11 +4,11 @@ import { TranslateSelectItem } from '../../interfaces';
 import { takeUntil, debounceTime, takeWhile, distinctUntilChanged, skip } from 'rxjs/operators';
 import { TranslatePipe } from '@ngx-translate/core';
 import { DynamicFormControl } from '../../interfaces/dynamic-form-control';
-import { BaseComponent } from '../../../../@core/base/base-component';
 import { merge } from 'rxjs';
 import { IdeoRegexService } from '../../../../@ideo/infrastructure/services/ideo-regex.service';
 import { IdeoValidators } from '../../validators/ideo.validators';
 import { DatePipe } from '@angular/common';
+import { BaseComponent } from '@app/@core/base/base-component';
 
 
 type supportedDefaultValuationsErrors = 'required' | 'max' | 'min' | 'minLength' | 'email' | 'pattern'

@@ -2,8 +2,8 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
 import { tap, map } from 'rxjs/operators';
-import { environment } from '../../../environments/environment';
 import { SettingModel } from '../models/setting.model';
+import { environment } from '@env/environment';
 @Injectable({
   providedIn: 'root'
 })
@@ -36,7 +36,7 @@ export class VatService {
       params: {
         cached: 'true'
       }
-    }).pipe(tap(x => { this.vat = +x; this.vatInclude = +(1) }));
+    }).pipe(tap(x => { this.vat = +x; this.vatInclude = +(1 + x) }));
   }
 }
 

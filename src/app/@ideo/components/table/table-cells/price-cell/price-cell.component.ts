@@ -1,7 +1,7 @@
 import { Component, OnInit, ChangeDetectionStrategy, ChangeDetectorRef } from '@angular/core';
+import { VatService } from '@app/@shared/services/vat.service';
 import { TableCell } from '../../models/table-cell';
 import { TableColumn } from '../../models/table-column';
-import { VatService } from '../../../../../@shared/services/vat.service';
 import { PriceCellData } from './price-cell-data';
 
 @Component({

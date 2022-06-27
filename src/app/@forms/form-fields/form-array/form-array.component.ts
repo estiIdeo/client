@@ -2,11 +2,10 @@ import { Component, OnInit, ChangeDetectorRef } from '@angular/core';
 import { FormArrayData } from './form-array';
 import { FormGroup, FormArray, FormBuilder, AbstractControl, AbstractControlOptions } from '@angular/forms';
 import { takeWhile } from 'rxjs/operators';
-import { BaseFieldDirective } from '../../@core/directives/base-field.directive';
-import { Field, FieldConfig } from '../../@core/interfaces';
-import { DynamicFormControl } from '../../@core/interfaces/dynamic-form-control';
+import { DynamicFormControl } from '@app/@forms/@core/interfaces/dynamic-form-control';
+import { BaseFieldDirective } from '@app/@forms/@core/directives/base-field.directive';
+import { Field, FieldConfig, FieldEvent } from '@app/@forms/@core/interfaces';
 import { FormTextComponent } from '../form-text/form-text.component';
-import { FieldEvent } from '../../@core/interfaces/events';
 
 @Component({
   selector: 'ideo-form-array',

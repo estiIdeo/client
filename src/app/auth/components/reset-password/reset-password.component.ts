@@ -3,7 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
 import { faLongArrowAltRight, faUser, faArrowAltCircleRight, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs/operators';
-import { BaseFormComponent } from 'src/app/@core/base/base-form-component';
+import { BaseFormComponent } from '@app/@core/base/base-form-component';
 
 
 

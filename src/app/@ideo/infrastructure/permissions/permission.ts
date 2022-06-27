@@ -1,5 +1,6 @@
-import { PermissionType, RolesType } from '../../../@shared/types/role.type';
-import { AnyString } from '../../../@shared/types/any-type.type';
+import { AnyString } from "@app/@shared/types/any-type.type";
+import { PermissionType, RolesType } from "@app/@shared/types/role.type";
+
 export interface Permission {
   roles?: (RolesType | AnyString)[];
   action?: ActionPermission;

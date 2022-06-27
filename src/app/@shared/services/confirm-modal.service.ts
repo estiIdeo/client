@@ -3,7 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { Observable } from 'rxjs';
 // import { take } from 'rxjs/operators';
 // import { DeleteModalComponent } from '../../@shared/components/delete-modal/delete-modal.component';
-import { FullScreenModalComponent } from '../components/full-screen-modal/full-screen-modal.component';
+//import { FullScreenModalComponent } from '../components/full-screen-modal/full-screen-modal.component';
 // import { EditOrCreateModalComponent } from '../components/edit-or-create-modal/edit-or-create-modal.component';
 // import { DynamicFormControl } from '../../@forms/@core/interfaces/dynamic-form-control';
 // import { FormTextComponent } from '../../@forms/form-fields/form-text/form-text.component';
@@ -58,12 +58,12 @@ export class ModalsService {
   //   }) as modalType<EditOrCreateModalComponent>
   // }
 
-  fullScreen(imageId: number, title: string): void {
+  /*fullScreen(imageId: number, title: string): void {
     this.modalService.show(FullScreenModalComponent, {
       initialState: { mediaItem: { mediaId: imageId }, title: title },
       class: 'modal-xl modal-dialog-centered',
     })
-  }
+  }*/
 
   // map(data: MarkerOptionsType & { icon?: SelectItem['icon'], positions?: LatLngType[], }): void {
   //   this.modalService.show(MapModalComponent, {

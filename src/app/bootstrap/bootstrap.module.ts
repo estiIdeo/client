@@ -1,6 +1,5 @@
-import { NgModule } from '@angular/core';
 import { AlertModule } from 'ngx-bootstrap/alert';
-import { AccordionModule } from 'ngx-bootstrap/accordion';
+// import { AccordionModule } from 'ngx-bootstrap/accordion';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { CollapseModule } from 'ngx-bootstrap/collapse';
 import { TabsModule } from 'ngx-bootstrap/tabs';
@@ -12,6 +11,7 @@ import { PopoverModule } from 'ngx-bootstrap/popover';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { RatingModule } from 'ngx-bootstrap/rating';
 import { PaginationModule } from 'ngx-bootstrap/pagination';
+import { NgModule } from '@angular/core';
 
 export const getBsDatepickerConfiguration = (): BsDatepickerConfig => {
   return Object.assign(new BsDatepickerConfig(), {
@@ -21,7 +21,7 @@ export const getBsDatepickerConfiguration = (): BsDatepickerConfig => {
 
 export function getBsModulesForRoot() {
   return [
-    AccordionModule.forRoot(),
+    // AccordionModule.forRoot(),
     AlertModule.forRoot(),
     BsDatepickerModule.forRoot(),
     BsDropdownModule.forRoot(),
@@ -39,7 +39,7 @@ export function getBsModulesForRoot() {
 
 const exportModules = [
   // BS Modules
-  AccordionModule,
+  // AccordionModule,
   BsDatepickerModule,
   BsDropdownModule,
   ButtonsModule,

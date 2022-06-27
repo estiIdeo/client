@@ -9,7 +9,7 @@ import { DynamicComponentModel } from '../../../../@shared/components/dynamic-co
 import { AsyncReturnType } from '../../../../@shared/types/async.return.type';
 import { IntelligenceKeys } from '../../../../@shared/types/IntelligenceKeys.type';
 import { SelectItem } from './select-item';
-import { translateType } from 'src/app/@shared/types/translate.type';
+import { translateType } from '@app/@shared/types/translate.type';
 export interface TableColumn<T = any, DModel = any> {
   field: (keyof T & string) | AnyString;
   bindTo?: string;

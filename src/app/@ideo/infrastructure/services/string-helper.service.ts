@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { IdeoModule } from '../../ideo.module';
 
 @Injectable({
   providedIn: 'root',

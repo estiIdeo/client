@@ -1,10 +1,11 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
-import { environment } from '../../../environments/environment';
-import { QueryBuilderService } from '../../@ideo/infrastructure/services/query-builder.service';
-import { LazyLoadEvent } from '../../@ideo/components/table/events/lazy-load.event';
-import { Observable } from 'rxjs';
-import { IPagedList } from '../../@shared/models/paged-list.response';
-import { ErrorMessages } from '../../@shared/models/error-messages.model';
+import { HttpClient, HttpParams } from "@angular/common/http";
+import { LazyLoadEvent } from "@app/@ideo/components/table/events/lazy-load.event";
+import { QueryBuilderService } from "@app/@ideo/infrastructure/services/query-builder.service";
+import { ErrorMessages } from "@app/@shared/models/error-messages.model";
+import { IPagedList } from "@app/@shared/models/paged-list.response";
+import { environment } from "@env/environment";
+import { Observable } from "rxjs";
+
 
 export abstract class BaseHttpService<T = any> {
   public abstract collationName: string;

@@ -10,7 +10,7 @@ import { MatchMode } from '../../components/table/models/table-filter';
 export class QueryBuilderService {
   constructor(private stringHelper: StringHelperService, private http: HttpClient) {}
 
-  public query(url: string, evt: LazyLoadEvent, params: any = null) {
+  public query(url: string, evt: LazyLoadEvent, params: any = null) :string{
     // const isExport = !!evt && !!evt.exportType;
     // const isAll = !!evt && evt.exportType == 'All';
     const queryParamsUrl = !!evt ? `?${this.getQueryParams(evt)}` : '';
@@ -25,10 +25,10 @@ export class QueryBuilderService {
       }
     }
     // if (!isExport) {
-    //   return urlWithParams;
-    // } else {
-      this.http.get<Blob>(urlWithParams).subscribe();//, { params: { export: evt.exportType } }
-    // }
+       return urlWithParams;
+   /* } else {
+      this.http.get<Blob>(urlWithParams, { params: { export: evt.exportType } }).subscribe();
+   }*/
   }
 
   public getQueryParams(evt: LazyLoadEvent, filterObjName: string = 'filter'): string {

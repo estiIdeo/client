@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { IntelligenceKeys } from '../../../@shared/types/IntelligenceKeys.type';
+import { IntelligenceKeys } from '@app/@shared/types/IntelligenceKeys.type';
 
 type StorageKeysType = 'token' | 'credentials' | 'user' | 'permissions' | 'selected-partner-fleet'
 type ExtendsStorageKeysType = IntelligenceKeys<StorageKeysType>

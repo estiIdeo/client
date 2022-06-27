@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { SubStrPipe } from 'src/app/@ideo/infrastructure/pipes/sub-str.pipe';
+import { SubStrPipe } from '@app/@ideo/infrastructure/pipes/sub-str.pipe';
 import { TableColumn } from '../../../../../@ideo/components/table/models/table-column';
 import { TableCell } from '../../models/table-cell';
 

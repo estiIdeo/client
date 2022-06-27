@@ -1,7 +1,8 @@
 <form class="dynamic-form {{ formCssClass }}" *ngIf="!!form" [formGroup]="form" novalidate
   (ngSubmit)="handleSubmit($event)">
   <div class="row {{ formRowCssClass }}">
-    <ng-container *ngFor="let field of config | permitted">
+    <ng-container *ngFor="let field of config ">
+      <!-- | permitted -->
       <ideo-dynamic-form-control class="col {{ field.config.styleClass }}" #formGroupEl
         *ngIf="!!field?.config?.name && !!form.controls[field.config.name]" [dynamicControl]="field" [group]="form"
         [template]="template" (onSubmit)="submit()">
