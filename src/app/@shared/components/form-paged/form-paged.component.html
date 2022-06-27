@@ -1,0 +1,20 @@
+<!-- <prx-breadcrum [items]="breadcrumbs" class="no-margin"></prx-breadcrum> -->
+<!-- <prx-page-header [title]="config.title" [pre]="config.preTitle">
+
+</prx-page-header> -->
+
+<div class="container-fluid d-flex justify-content-center">
+  <div class="col-md-8">
+        <ideo-dynamic-form-group #dyn *ngIf="!!groupConfig?.controls?.length" [config]="groupConfig?.controls"
+          [(form)]="formInstance"></ideo-dynamic-form-group>
+  </div>
+</div>
+
+<!-- <prx-card [title]="title">
+  <prx-card-body>
+    <ideo-dynamic-form-group #dyn *ngIf="!!groupConfig?.controls?.length" [config]="groupConfig?.controls"
+      [(form)]="formInstance" (onSubmit)="submitForm($event)" [validation]="groupConfig?.validation"
+      [errorMessages]="groupConfig?.errorMessages">
+    </ideo-dynamic-form-group>
+  </prx-card-body>
+</prx-card> -->

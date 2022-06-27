@@ -13,6 +13,7 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { TagFormComponent } from './components/tag-form/tag-form.component';
+import { FormPagedComponent } from './components/form-paged/form-paged.component';
 const exportModules = [
   // external modules
 
@@ -34,10 +35,10 @@ const exportModules = [
 @NgModule({
   providers: [CurrencyPipe],
   declarations: [
+    FormPagedComponent,
   /*  UnsanitizePipe,
     GroupByPipe,
     TabledPageComponent,
-    FormPagedComponent,
     DeleteModalComponent,
     WizardPageComponent,
     ImportComponent,

@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { EffectsModule } from '@ngrx/effects';
 import { StoreModule } from '@ngrx/store';
+import { TranslateModule } from '@ngx-translate/core';
 import { AuthenticationService } from './@core/authentication/authentication.service';
 import { SharedModule } from './@shared/shared.module';
 import { AppRoutingModule } from './app-routing.module';
@@ -24,6 +25,7 @@ import { reducers } from './state/auth.state';
     SharedModule,
     EffectsModule.forRoot([AuthEffects]),
     StoreModule.forRoot(reducers,{}),
+    TranslateModule.forRoot()
   ],
   providers: [AuthenticationService],
   bootstrap: [AppComponent]

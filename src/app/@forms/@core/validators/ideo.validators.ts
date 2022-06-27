@@ -8,6 +8,7 @@ import {
   Validators,
 } from '@angular/forms';
 import { map, switchMap } from 'rxjs/operators';
+import * as properties from 'src/app/prototypes'
 
 export class IdeoValidators {
   public static groupValidations(getErrorNames: (values: any) => string): ValidatorFn {
