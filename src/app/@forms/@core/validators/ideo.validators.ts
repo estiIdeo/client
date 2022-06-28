@@ -250,7 +250,7 @@ export class IdeoValidators {
         const valid = validation(tz);
         if (!valid) {
           return {
-            creditcard: 'Portal.Forms.Validation.Errors.CreditCard',
+            creditcard: 'Forms.Validation.Errors.CreditCard',
           };
         }
       }

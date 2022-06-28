@@ -9,9 +9,9 @@
       </ng-container>
       <ng-template #withPrefix>
         {{
-          (!!value || value === 0) ? ('Portal.Common.Selected' | translate : {value
+          (!!value || value === 0) ? ('Common.Selected' | translate : {value
           :(label || placeholder) | translate }) :
-          ('Portal.Common.SelectOption' | translate : {value :(placeholder || 'Portal.Common.SelectOption.DefaultValue') |
+          ('Common.SelectOption' | translate : {value :(placeholder || 'Common.SelectOption.DefaultValue') |
           translate})
           }}
         </ng-template>
@@ -32,7 +32,7 @@
     <button type="button" [disabled]="true" ngbDropdownItem class="btn px-2" [ngClass]="{
       'd-none' : !!options?.length
     }">
-      {{ 'Portal.Common.Select.NoOptions' | translate }}
+      {{ 'Common.Select.NoOptions' | translate }}
     </button>
   </div>
   <div *ngIf="!!lazyOptions" [ngStyle]="dropdownMenuStyle" [ngClass]="dropdownMenuClass" ngbDropdownMenu
@@ -49,7 +49,7 @@
         [ngClass]="{
         'd-none' : !!aOptions?.length
       }">
-        {{ 'Portal.Common.Select.NoOptions' | translate }}
+        {{ 'Common.Select.NoOptions' | translate }}
       </button>
     </cdk-virtual-scroll-viewport>
   </div>

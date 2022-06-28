@@ -1,6 +1,6 @@
 <ng-template #records nkAttachTo="panelSubtitle">
   <p [hidden]="!showTotalRecords || !(!!totalRecords || totalRecords === 0)" class="m-0 align-items-center d-flex pr-4">
-    <strong> {{ 'Portal.Ideo.Table.TotalRecords' | translate: { totalRecords: totalRecords || 0 } }} </strong>
+    <strong> {{ 'Ideo.Table.TotalRecords' | translate: { totalRecords: totalRecords || 0 } }} </strong>
   </p>
 </ng-template>
 
@@ -73,7 +73,7 @@
                 <h5 style="font-size: 0.9em" class="font-weight-light text-muted">
                   {{
                     rowGroup?.totalFieldName
-                      ? (item[rowGroup?.totalFieldName] || 0) + ' ' + ('Portal.Common.Total' | translate) + ' '
+                      ? (item[rowGroup?.totalFieldName] || 0) + ' ' + ('Common.Total' | translate) + ' '
                       : null
                   }}
                 </h5>
@@ -229,7 +229,7 @@
             <div class="not-found-wrapper">
               <ng-content select="[not-found]"></ng-content>
             </div>
-            <div class="default-not-found" translate>Portal.Ideo.Table.NoDataFound</div>
+            <div class="default-not-found" translate>Ideo.Table.NoDataFound</div>
           </td>
         </tr>
       </ng-template>
@@ -240,7 +240,7 @@
   <div class="d-flex justify-content-start">
     <ng-container *ngIf="!showTotalRecords; else records" class="pr-3"> </ng-container>
     <div *ngIf="pageSizeOptions?.length" class="ml-auto d-flex align-items-center page-size-dropdown">
-      <label class="m-0" translate>Portal.Ideo.Table.Show &nbsp;</label>
+      <label class="m-0" translate>Poal.Ideo.Table.Show &nbsp;</label>
       <ideo-select
         [(ngModel)]="service.pageSize"
         name="pageSize"
@@ -249,7 +249,7 @@
         placement="top-left"
       >
       </ideo-select>
-      <label class="m-0" translate>&nbsp; Portal.Ideo.Table.Entries</label>
+      <label class="m-0" translate>&nbsp; Ideo.Table.Entries</label>
     </div>
   </div>
   <div class="">

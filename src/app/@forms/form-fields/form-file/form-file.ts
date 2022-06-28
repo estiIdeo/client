@@ -9,7 +9,7 @@ export class FormFile {
   public autoUpload: boolean = false;
   public getTemplateUrl?: (form: FormGroup) => string;
   public newStyle: boolean = false;
-  public title: string = "Portal.Forms.Core.image.ClickHere";
+  public title: string = "Forms.Core.image.ClickHere";
   public subTitle: string = `default`;
   public category: FileCategory = FileCategory.Image;
   public multiple: boolean = false;
