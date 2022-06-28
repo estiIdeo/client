@@ -8,7 +8,7 @@
       [ngClass]="{ 'is-invalid': !!priceControl.touched && !control.valid }" (focus)="$event.target.select()"
       [placeholder]="config?.placeholder || '' | translate" (input)="onInput($event?.target?.value,false)" />
     <!-- (keyup)="keyUp($event?.target?.value, false, $event.keyCode)" -->
-    <label for="{{ id + '-price' }}" translate> Portal.Forms.Filed.Price.Title </label>
+    <label for="{{ id + '-price' }}" translate> Forms.Filed.Price.Title </label>
   </div>
   <div *ngIf="!!form" [formGroup]="form" class="" [ngClass]="{'d-none' :  !!data?.hideVat}">
     <input id="{{ id + '-vatPrice' }}" currencyFormatter class="form-control {{ config?.inputStyleClass }} "
@@ -16,6 +16,6 @@
       [placeholder]="config?.placeholder || '' | translate" (focus)="$event.target.select()"
       (input)="onInput($event?.target?.value,true)" />
     <!-- (keyup)="keyUp($event?.target?.value, true, $event.keyCode)" -->
-    <label for="{{ id + '-vatPrice' }}" translate> Portal.Forms.Filed.VatPrice.Title </label>
+    <label for="{{ id + '-vatPrice' }}" translate> Forms.Filed.VatPrice.Title </label>
   </div>
 </div>

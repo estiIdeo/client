@@ -27,7 +27,7 @@ export class FilesService {
 
   constructor(private http: HttpClient) { }
 
-  public uploadFile(file: File, action: IntelligenceKeys<'Media'> = 'Media', entityName?: 'Portal.Common.Media' | IntelligenceKeys<translateType>, errorMessages?: ErrorMessages): Observable<any> {
+  public uploadFile(file: File, action: IntelligenceKeys<'Media'> = 'Media', entityName?: 'Common.Media' | IntelligenceKeys<translateType>, errorMessages?: ErrorMessages): Observable<any> {
     const headers = new HttpHeaders();
     headers.append('Content-Type', 'multipart/form-data');
     headers.set('enctype', 'multipart/form-data');

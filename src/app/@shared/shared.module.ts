@@ -12,7 +12,6 @@ import { TableModule } from '@app/@ideo/components/table/table.module';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
-import { TagFormComponent } from './components/tag-form/tag-form.component';
 import { FormPagedComponent } from './components/form-paged/form-paged.component';
 const exportModules = [
   // external modules
@@ -63,9 +62,7 @@ const exportModules = [
     WsiMoreButtonsComponent,
     MapModalComponent,
     FormModalComponent,*/
-    // SearchInputComponent,
-    TagFormComponent
-    
+    // SearchInputComponent,    
   ],
   imports: [
     ...exportModules,

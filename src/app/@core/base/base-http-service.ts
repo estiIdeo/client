@@ -10,7 +10,7 @@ import { Observable } from "rxjs";
 export abstract class BaseHttpService<T = any> {
   public abstract collationName: string;
   public get entityName(): string {
-    return 'Portal.Common.Api.' + this.collationName?.split('/')?.map(i => i[0]?.toUpperCase() + i?.slice(1)).join('.')
+    return 'Common.Api.' + this.collationName?.split('/')?.map(i => i[0]?.toUpperCase() + i?.slice(1)).join('.')
   }
   public get apiUrl() {
     return `${environment.serverUrl}/api/${this.collationName}`;

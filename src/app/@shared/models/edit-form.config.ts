@@ -8,7 +8,7 @@ export interface PageFormConfig<T = any> {
   title?: string;
   title$: Observable<string>;
  // breadcrumbs?: BreadcrumType[];
-  submit?: (values: T) => Observable<any>;
+  submit: (values: T) => Observable<any>;
   getEntityById?: (id: number) => Observable<T>;
   modifyOnEdit?: (config: GroupConfig, form: FormGroup, data: T) => void;
   appendControl$?: Observable<DynamicFormControl[]>;

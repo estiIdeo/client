@@ -56,14 +56,14 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
     const baseErrorBody: TranslateSelectItem = { errorName: key, filedLabel }
     switch (key) {
       case Validators.required.name: {
-        return { ...baseErrorBody, label: 'Portal.Common.Required', value: filedLabel }
+        return { ...baseErrorBody, label: 'Common.Required', value: filedLabel }
         break
       }
       case Validators.max.name: {
         const { actual, max } = value
         return {
           ...baseErrorBody,
-          label: 'Portal.Forms.Validation.Errors.Max',
+          label: 'Forms.Validation.Errors.Max',
           data: {
             entity: filedLabel,
             val: max,
@@ -75,7 +75,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         const { actual, min } = value
         return {
           ...baseErrorBody,
-          label: 'Portal.Forms.Validation.Errors.Min',
+          label: 'Forms.Validation.Errors.Min',
           data: {
             val: min,
             entity: filedLabel,
@@ -87,7 +87,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         const { actualLength, requiredLength } = value
         return {
           ...baseErrorBody,
-          label: 'Portal.Forms.Validation.Errors.MinLength',
+          label: 'Forms.Validation.Errors.MinLength',
           data: {
             chars: requiredLength,
             entity: filedLabel,
@@ -99,7 +99,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         const { actualLength, requiredLength } = value
         return {
           ...baseErrorBody,
-          label: 'Portal.Forms.Validation.Errors.MinLength',
+          label: 'Forms.Validation.Errors.MinLength',
           data: {
             chars: requiredLength,
             entity: filedLabel,
@@ -110,7 +110,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
       case Validators.email.name: {
         return {
           ...baseErrorBody,
-          label: 'Portal.Forms.Validation.Errors.Email',
+          label: 'Forms.Validation.Errors.Email',
         }
         break
       }
@@ -118,11 +118,11 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         const { requiredPattern, actualValue } = value
         const regexName = Object.keys(IdeoRegexService)?.find(i => IdeoRegexService?.[i]?.toString() === requiredPattern)
         const translateName = `Portal.Common.${regexName?.charAt(0)?.toUpperCase() + regexName?.slice(1)}`
-        const patternTranslateName = `Portal.Forms.Validation.Errors.Pattern.${regexName?.charAt(0)?.toUpperCase() + regexName?.slice(1)}`
+        const patternTranslateName = `Forms.Validation.Errors.Pattern.${regexName?.charAt(0)?.toUpperCase() + regexName?.slice(1)}`
         if (translateName !== translatePipe?.transform(translateName)) {
           return {
             ...baseErrorBody,
-            label: 'Portal.Forms.Validation.Errors.Pattern',
+            label: 'Forms.Validation.Errors.Pattern',
             data: {
               pattern: translateName,
               entity: filedLabel,
@@ -131,7 +131,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         } else if (patternTranslateName !== translatePipe?.transform(patternTranslateName)) {
           return {
             ...baseErrorBody,
-            label: 'Portal.Forms.Validation.Errors.Pattern',
+            label: 'Forms.Validation.Errors.Pattern',
             data: {
               pattern: patternTranslateName,
               entity: filedLabel,
@@ -141,7 +141,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         console.log("please add me to translate as validation error message", patternTranslateName)
         return {
           ...baseErrorBody,
-          label: 'Portal.Common.Errors.Invalid',
+          label: 'Common.Errors.Invalid',
           value: filedLabel
         }
         break
@@ -149,7 +149,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
       case IdeoValidators.creditCard.name: {
         return {
           ...baseErrorBody,
-          label: 'Portal.Common.Errors.Invalid',
+          label: 'Common.Errors.Invalid',
           value: filedLabel
         }
         break
@@ -159,7 +159,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         if (Date.parse(date?.toISOString())) {
           return {
             ...baseErrorBody,
-            label: 'Portal.Forms.Validation.Errors.BeforeThan',
+            label: 'Forms.Validation.Errors.BeforeThan',
             data: {
               date: datePipe.transform(date, 'dd/MM/yy, HH:mm'),
               entity: baseErrorBody?.filedLabel
@@ -168,7 +168,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
         }
         return {
           ...baseErrorBody,
-          label: 'Portal.Common.Errors.Invalid',
+          label: 'Common.Errors.Invalid',
           value: filedLabel
         }
         break
@@ -192,14 +192,14 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
     const baseErrorBody: TranslateSelectItem = { errorName: key, label: val, }
     switch (key) {
       case (Validators.required.name): {
-        const keyTranslateVal = this.translatePipe.transform('Portal.Common.Required')?.replace(/{{.*}}/, '')?.trim()
+        const keyTranslateVal = this.translatePipe.transform('Common.Required')?.replace(/{{.*}}/, '')?.trim()
         const valTranslateVal = this.translatePipe.transform(val)
         if (!valTranslateVal?.includes(keyTranslateVal)) {
-          return { ...baseErrorBody, label: 'Portal.Common.Required', value: val }
+          return { ...baseErrorBody, label: 'Common.Required', value: val }
         } else if (!!val) {
           return { ...baseErrorBody }
         }
-        return { ...baseErrorBody, label: 'Portal.Common.Required', value: 'Portal.Common.Required.ThisField' }
+        return { ...baseErrorBody, label: 'Common.Required', value: 'Common.Required.ThisField' }
       }
       // can handle any error validation
       default:
@@ -216,7 +216,7 @@ export class ValidationMessagesComponent extends BaseComponent implements OnInit
           return this.handleErrors(key, item)
         }
         case 'object': {
-          item.label = item?.label || `Portal.Common.Errors.${key}`
+          item.label = item?.label || `Common.Errors.${key}`
           item.errorName = key
           return item
         }

@@ -33,7 +33,7 @@ export class TableFiltersComponent implements OnInit, AfterViewInit {
 
   public buttons: ButtonItem[] = [
     {
-      label: 'Portal.Ideo.Table.Filters.Reset',
+      label: 'Ideo.Table.Filters.Reset',
       click: () => this.reset(),
       styleClass: 'btn-static position-relative btn',
       icon: faRedo,
@@ -42,7 +42,7 @@ export class TableFiltersComponent implements OnInit, AfterViewInit {
   ];
 
   public applyBtn: ButtonItem = {
-    label: 'Portal.Ideo.Table.Filters.Apply',
+    label: 'Ideo.Table.Filters.Apply',
     styleClass: 'btn-primary position-relative btn ',
     click: () => this.applyFilters(true),
     disabled: !this.group.valid,

@@ -54,13 +54,13 @@
                 <i class="fas" [ngClass]="{'fa-arrow-left': isRtl, 'fa-arrow-right': !isRtl}"></i>
               </button>
               <button *ngIf="!!form" type="submit" class="btn btn-primary" [disabled]="!validForm">
-                Portal.Common.SubmitBtn
+                Common.SubmitBtn
               </button>
             </footer>
             <footer class="wizard-navigation d-flex justify-content-end align-items-center" *ngSwitchCase="1">
               <div class="navigation-bullets rounded shadow-sm d-flex justify-content-end align-items-center">
                 <div class="nav-steps-number mr-2">
-                  {{ 'Portal.Common.Wizard.Steps' | translate: { step: i + 1, total: config.length } }}
+                  {{ 'Common.Wizard.Steps' | translate: { step: i + 1, total: config.length } }}
                 </div>
 
                 <button
@@ -92,11 +92,8 @@
               </div>
 
               <button *ngIf="!!form" type="submit" class="btn btn-primary" [disabled]="!validForm" translate>
-                Portal.Common.SubmitBtn
+                Common.SubmitBtn
               </button>
-              <!-- <button type="button" class="btn btn-primary" (click)="log(form)" translate>
-                Portal.Common.Test
-              </button> -->
             </footer>
           </ng-container>
         </cdk-step>

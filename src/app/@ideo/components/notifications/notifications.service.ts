@@ -66,14 +66,14 @@ export class NotificationsService {
     switch (err?.status) {
       case 200:
         // Success
-        message = messageObj?.[err?.status] || 'Portal.Notifications.HandleError.Success';
+        message = messageObj?.[err?.status] || 'Notifications.HandleError.Success';
         if (message !== 'false') {
-          this.success(message, 'Success', null, { entityName: entityName, action: `Portal.Ideo.Notification.Action.${ReqMethod?.[method || ReqMethod.PUT?.valueOf()]}` });
+          this.success(message, 'Success', null, { entityName: entityName, action: `Ideo.Notification.Action.${ReqMethod?.[method || ReqMethod.PUT?.valueOf()]}` });
         }
         break;
       case 204:
         // No Content
-        message = messageObj?.[err?.status] || `Portal.Notifications.HandleError.NoContent`;
+        message = messageObj?.[err?.status] || `Notifications.HandleError.NoContent`;
         if (message !== 'false') {
           this.error(message, 'Error', null, { entityName: entityName });
         }
@@ -81,7 +81,7 @@ export class NotificationsService {
 
       case 400:
         // Validation Error
-        message = (!validationResult ? 'Portal.Notifications.HandleError.ValidationError' : '');
+        message = (!validationResult ? 'Notifications.HandleError.ValidationError' : '');
         if (message !== 'false') {
           if (!!validationResult) {
             const errorParser = (arr: string[]) => '[' + arr.reduce((p, c, i) => `${(!!p ? p + " ," : "")}${c}`, '') + ']';
@@ -97,14 +97,14 @@ export class NotificationsService {
         break;
       case 403:
         // Forbidden
-        message = messageObj?.[err?.status] || 'Portal.Notifications.HandleError.Forbidden';
+        message = messageObj?.[err?.status] || 'Notifications.HandleError.Forbidden';
         if (message !== 'false') {
           this.warning(message);
         }
         break;
       case 404:
         // Resource not found
-        message = messageObj?.[err?.status] || 'Portal.Notifications.HandleError.NotFound';
+        message = messageObj?.[err?.status] || 'Notifications.HandleError.NotFound';
         if (message !== 'false') {
           this.error(message, 'Not Found', null, { entityName: entityName });
         }
@@ -112,23 +112,23 @@ export class NotificationsService {
       // case 409:
       //   // server validation need to show server error (conflict)
       //   err = err as HttpErrorResponse;
-      //   message = messageObj?.[err?.status] || err.error?.['message'] || 'Portal.Notifications.HandleError.Conflict';
+      //   message = messageObj?.[err?.status] || err.error?.['message'] || 'Notifications.HandleError.Conflict';
       //   if (message !== 'false') {
-      //     this.error(message, null, null, { entityName: entityName || 'Portal.Common.Item' });
+      //     this.error(message, null, null, { entityName: entityName || 'Common.Item' });
       //   }
       //   break;
       case 409:
         // UnprocessableEntity
         err = err as HttpErrorResponse;
-        message = messageObj?.[err?.status] || err.error?.['message'] || 'Portal.Notifications.HandleError.UnprocessableEntity';
+        message = messageObj?.[err?.status] || err.error?.['message'] || 'Notifications.HandleError.UnprocessableEntity';
         if (message !== 'false') {
-          this.error(message, null, null, { entityName: entityName || 'Portal.Common.Item' });
+          this.error(message, null, null, { entityName: entityName || 'Common.Item' });
         }
         break;
       case 500:
         // bed url
         // coronation id
-        message = messageObj?.[err?.status] || 'Portal.Notifications.HandleError.BadUrl';
+        message = messageObj?.[err?.status] || 'Notifications.HandleError.BadUrl';
         if (message !== 'false') {
           this.error(message);
         }

@@ -27,7 +27,7 @@ export class FormFileComponent extends BaseFieldDirective implements Field<FormF
   public uploadImageId: any[] | any;
   public buttons: ButtonItem[] = [
     {
-      label: 'Portal.Common.Delete',
+      label: 'Common.Delete',
       icon: faTrash,
       click: (id) => {
         if (this.config.data.multiple) {
@@ -40,7 +40,7 @@ export class FormFileComponent extends BaseFieldDirective implements Field<FormF
       },
     },
     {
-      label: 'Portal.Common.Fullscreen',
+      label: 'Common.Fullscreen',
       click: (id: number) => this.openInFullscreen(id),
       icon: faExpand,
     },
@@ -75,7 +75,7 @@ export class FormFileComponent extends BaseFieldDirective implements Field<FormF
     if(this.config?.data?.subTitle !== 'default'){
       return this.config?.data?.subTitle;
     }
-    return `Portal.Forms.Core.image.${this.config?.data?.category === FileCategory.Image ? "ToUploadAnImage" : "ToUploadADocument"}`;
+    return `Forms.Core.image.${this.config?.data?.category === FileCategory.Image ? "ToUploadAnImage" : "ToUploadADocument"}`;
   }
 
   
@@ -196,13 +196,13 @@ export class FormFileComponent extends BaseFieldDirective implements Field<FormF
     if(this.config?.data?.subTitle !== 'default'){
       this.subTitle = this.config?.data?.subTitle;
     }else{
-      this.subTitle = `Portal.Forms.Core.image.${this.config?.data?.category === FileCategory.Image ? "ToUploadAnImage" : "ToUploadADocument"}`;
+      this.subTitle = `Forms.Core.image.${this.config?.data?.category === FileCategory.Image ? "ToUploadAnImage" : "ToUploadADocument"}`;
     }
   }
 
   public autoUpload(i: number, files: FileList) {
     this.fileService
-      .uploadFile(files.item(i), 'Media', 'Portal.Common.Media', { 422: 'true', 200: 'false', 400: 'Portal.Common.ErrorMessages.UploadMedia' })
+      .uploadFile(files.item(i), 'Media', 'Common.Media', { 422: 'true', 200: 'false', 400: 'Common.ErrorMessages.UploadMedia' })
       .toPromise()
       .then((res) => {
         if (!!res && res.id) {
