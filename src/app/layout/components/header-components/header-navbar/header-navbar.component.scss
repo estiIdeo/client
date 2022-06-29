@@ -1,0 +1,104 @@
+@import "import";
+
+:host {
+  &.collapsed {
+    .navbar {
+      &:not(.rtl) {
+        margin-left: 0;
+      }
+
+      &.rtl {
+        margin-right: 0;
+      }
+    }
+  }
+}
+
+.navbar {
+  display: flex;
+  align-items: flex-start;
+  padding: 0;
+  height: 100vh;
+  width: $mz-sidenav-width;
+  height: 100%;
+
+  box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.35);
+  position: fixed;
+  top: 0;
+
+
+  &:not(.rtl) {
+    left: 0;
+
+    &.isMobile {
+      margin-left: -$mz-sidenav-width;
+
+      transition: width 0.3s ease-in-out,
+        margin-left 0.3s ease-in-out;
+    }
+
+
+  }
+
+  @include media-breakpoint-up($grid-float-breakpoint) {
+    flex-direction: column;
+    height: $mz-header-height;
+    flex-direction: row;
+    align-items: flex-end;
+    margin-left: 0;
+
+    width: auto;
+    position: relative;
+    box-shadow: none;
+  }
+
+  &.rtl {
+    right: 0;
+
+    &.isMobile {
+      margin-right: -$mz-sidenav-width;
+
+      transition: width 0.3s ease-in-out,
+        margin-right 0.3s ease-in-out;
+    }
+
+    @include media-breakpoint-up($grid-float-breakpoint) {
+      margin-right: 0;
+    }
+
+
+  }
+
+  bottom: 0;
+  background-color: $white;
+  z-index: 1;
+
+
+}
+
+.navbar-collapse {
+  height: calc(100% - #{$mz-header-height});
+  overflow: auto;
+
+  @include media-breakpoint-up($grid-float-breakpoint) {
+    height: auto;
+    overflow: visible;
+  }
+}
+
+.dd-icon {
+  margin-left: 1.5rem;
+}
+
+.sidenav-logo {
+  height: $mz-header-height;
+  align-items: center;
+
+  .logo {
+    height: $mz-sidenav-logo-max-height;
+  }
+
+  @include media-breakpoint-up($grid-float-breakpoint) {
+    display: none;
+  }
+}

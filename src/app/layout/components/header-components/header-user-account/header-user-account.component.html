@@ -1,0 +1,61 @@
+<div class="nav-item account dropdown" dropdown placement="bottom right">
+  <prx-nav-link dropdownToggle [dark]="dark">
+    <img *ngIf="!!authenticationResponse?.avatarId; else generatedIcon"
+      [src]="authenticationResponse?.avatarId | imageId: true" class="avatar user-avatar rounded-circle" alt="..." />
+
+    <ng-template #generatedIcon>
+      <span class="acronym" [style.background-color]="authenticationResponse.username | colorHash">{{
+        [authenticationResponse.firstName, authenticationResponse.lastName] | acronym
+        }}</span>
+    </ng-template>
+  </prx-nav-link>
+
+  <div class="dropdown-menu"
+    [ngClass]="{isMobile:isMobile, 'dropdown-menu-right' :(!isRtl || isMobile) ,'dropdown-menu-left' : !(!isRtl || isMobile)}"
+    [style]="isMobile ? 'width:92vw; margin: 0 4vw;' : 'width:25rem;'" *dropdownMenu>
+    <div class="dropdown-heading rounded-top bg-3 arrow position-top">
+      <div class="media align-items-center">
+        <img *ngIf="!!authenticationResponse?.avatarId; else generatedBigIcon"
+          [src]="authenticationResponse?.avatarId | imageId: true" class="user-avatar shadow mr-2 rounded-circle"
+          alt="" />
+
+        <ng-template #generatedBigIcon>
+          <span class="acronym big" [style.background-color]="authenticationResponse.username | colorHash">{{
+            [authenticationResponse.firstName, authenticationResponse.lastName] | acronym
+            }}</span>
+        </ng-template>
+
+        <div class="media-body">
+          <span class="bold user-name text-overflow text-capitalize">{{ authenticationResponse?.firstName }} {{
+            authenticationResponse?.lastName }}</span>
+          <p class="small text-muted text-overflow mb-0">{{ authenticationResponse?.username }}</p>
+        </div>
+      </div>
+    </div>
+
+    <ul class="dropdown-body list list-group list-group-flush">
+      <li class="list-group-item list-group-item-action">
+        <a href="javascript:;">
+          <i-feather name="user" class="mr-2"></i-feather>
+          Profile
+        </a>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <a href="javascript:;">
+          <i-feather name="settings" class="mr-2"></i-feather>
+          Settings
+        </a>
+      </li>
+      <li class="list-group-item list-group-item-action">
+        <a href="javascript:;">
+          <i-feather name="help-circle" class="mr-2"></i-feather>
+          Help
+        </a>
+      </li>
+    </ul>
+
+    <div class="dropdown-footer d-flex justify-content-between align-items-center">
+      <button class="btn btn-rounded btn-primary" (click)="logout()">Log out</button>
+    </div>
+  </div>
+</div>

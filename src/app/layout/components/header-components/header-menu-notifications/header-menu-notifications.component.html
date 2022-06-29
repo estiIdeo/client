@@ -1,0 +1,58 @@
+<div class="nav-item notifications dropdown" dropdown placement="bottom right" [insideClick]="true"
+  (isOpenChange)="onOpenChange($event)">
+  <prx-nav-link [class]="{ 'text-dark' : !dark  }" [dark]="dark" dropdownToggle>
+    <i-feather name="bell" [class]="{ring : billing   }"></i-feather>
+    <span *ngIf="billing" class="ml-2 notification-badge notification-indicator"></span>
+  </prx-nav-link>
+
+  <div class="dropdown-menu"
+    [ngClass]="{isMobile:isMobile, 'dropdown-menu-right' :(!isRtl || isMobile) ,'dropdown-menu-left' : !(!isRtl || isMobile)}"
+    [style]="isMobile ? 'width:92vw; margin: 0 4vw;' : 'width:25rem;'" *dropdownMenu>
+    <div class="dropdown-heading d-flex align-items-center justify-content-between">
+      <h6 class="m-0 text-uppercase bold" translate>Portal.Menu.Notification.Title</h6>
+      <small class="text-muted" *ngIf="alerts && alerts.length"><span class="bold number">{{
+          alerts.length }}</span> <span translate> Portal.Menu.Notification.Title</span></small>
+
+      <small class="text-muted"><a [routerLink]="isFleetUser ? ['/fleets', 'my', 'profile', 'alerts', 'all'] : ['/agencies', partnerId, 'profile', 'alerts']" class="bold number"
+          translate> Portal.Menu.Notification.ShowAll</a>
+      </small>
+    </div>
+
+    <ng-container *ngIf="alerts && alerts.length; else loading">
+      <prx-fade-content contentClass="list list-hover dropdown-body">
+        <a [routerLink]="['',{ outlets: { popup: ['alerts',alert?.id ] } }]"
+          class="list-group-item list-group-item-action row"
+          [class]="{'red-alert':!!alert?.userId && !alert?.isRead && (alert?.status === 1)  }"
+          style="text-align: justify;" *ngFor="let alert of alerts">
+          <span class="text-{{ alert.priority }}">
+          </span>
+          <div *ngIf="!!alert?.userId" class="w-100 d-flex justify-content-end"> <span class="urgent"
+              translate>Portal.Menu.Notification.Urgent</span>
+          </div>
+
+          <p class="semi-bold col row">
+            <prx-icon class="col-2" [icon]="alertIcon(alert.subject)"> </prx-icon>
+            <span class="col-9 pr-0">
+              <span class="bold d-block">{{ getAlertSubjectTypeName(alert.subject) | translate }}</span>
+              <span class=" text-muted small">{{ alertTime(alert.update || alert.created) }}</span>
+            </span>
+            <prx-icon class="col-1 pl-0 mt-3" *ngIf="!alert?.isRead" icon='circular'> </prx-icon>
+          </p>
+        </a>
+      </prx-fade-content>
+
+      <div class="dropdown-footer text-center">
+        <div (click)="more()">
+          <i-feather [hidden]="loadMore" name='more-horizontal'></i-feather>
+          <i-feather [hidden]="!loadMore" name='loader'></i-feather>
+        </div>
+      </div>
+    </ng-container>
+
+    <ng-template #loading>
+      <div class="px-3">
+        <ideo-loader template="alerts" [isLoading]="isLoading"></ideo-loader>
+      </div>
+    </ng-template>
+  </div>
+</div>

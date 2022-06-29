@@ -3,12 +3,8 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
 import { faCheck, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { faUser, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
-import { finalize } from 'rxjs/operators';
 import { BaseFormComponent } from '@app/@core/base/base-form-component';
-import { Store } from '@ngrx/store';
-import { Login } from '@app/state/auth.actions';
 import { Observable } from 'rxjs';
-import { IAppState, selectAuthState } from '@app/state/auth.state';
 import { User } from '@app/models/user';
 
 @Component({
@@ -29,11 +25,9 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private store: Store<IAppState>
   ) {
     super();
     this.isLoading = false;
-    this.state = this.store.select(selectAuthState);
     this.createForm();
   }
 
@@ -46,7 +40,6 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
     console.log(value);
     this.user.username=value.username
     this.user.password=value.password
-    this.store.dispatch(new Login(value));
   }
   private createForm() {
     this.form = this.formBuilder.group({
