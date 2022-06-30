@@ -1,0 +1,36 @@
+<nav class="navbar" [ngClass]="{ 'navbar-dark bg-dark': dark }">
+  <div class="container-fluid">
+
+    <!-- SEARCH FORM -->
+
+    <img class="d-none d-md-block" src="assets/icons/logo.svg" alt="" />
+
+
+    <nav class="navbar-nav nav m-0">
+
+      <prx-menu-toggler [ngClass]="{isOpen :sidenavCollapsed}" [dark]="dark"
+        class="sidenav-toggler d-md-none mr-auto m-0" (click)="toggleSidenav()">
+      </prx-menu-toggler>
+
+      <div>
+        <img class="w-80 d-block d-md-none" src="assets/icons/logo.svg" alt="" />
+      </div>
+
+
+      <!-- APPS -->
+
+
+      <!-- ACCOUNT DROPDOWN -->
+      <prx-header-user-account [isRtl]="isRtl" [isMobile]="isMobile" [dark]="dark"
+        [ngClass]="isMobile ? 'mx-1' : 'mx-2' ">
+      </prx-header-user-account>
+
+      <!-- QUICK SIDENAV TOGGLER -->
+      <div>
+        <prx-nav-link [dark]="dark" (click)="toggleQuickSidenav()">
+          <i-feather name="more-vertical"></i-feather>
+        </prx-nav-link>
+      </div>
+    </nav>
+  </div>
+</nav>

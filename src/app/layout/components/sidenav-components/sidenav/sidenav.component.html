@@ -1,0 +1,62 @@
+<!-- <div class="sidenav-logo">
+  <a class="sidenav-brand" href="javascript:;">
+    <img src="assets/img/logo-light.svg" alt="Proxima" class="logo" />
+  </a>
+
+  <prx-menu-toggler class="sidenav-toggler" dark="true" (click)="toggleSidenav()"></prx-menu-toggler>
+</div>
+
+<div perfectScrollbar class="sidenav-content">
+  <nav class="nav flex-column">
+    <div class="nav-item user-sidenav nav-dropdown">
+      <a href="javascript:;" class="nav-link" openParent (onToggle)="user.open = $event">
+        <prx-avatar-info [name]="user.avatar.name" [info]="user.info">
+          <prx-avatar [avatar]="user.avatar" class="user-picture"></prx-avatar>
+        </prx-avatar-info>
+
+        <prx-dropdown-icon [open]="user.open" class="dd-icon"></prx-dropdown-icon>
+      </a>
+
+      <div class="nav-dropdown-items">
+        <div class="stat">
+          <prx-progress-solid
+            size="xs"
+            [value]="83"
+            suffix="%"
+            label="You're running out of space"
+            class="shadow mb-4 sidenav-progress"
+          ></prx-progress-solid>
+        </div>
+
+        <nav class="nav justify-content-between">
+          <a href="javascript:;" class="nav-link text-truncate m-0" [routerLink]="['/inbox']">
+            <fa-icon [icon]="icons.faInbox" class="mr-1"></fa-icon>
+            <span class="small">Mail</span>
+            <small class="badge badge-primary">7</small>
+          </a>
+          <a href="javascript:;" class="nav-link text-truncate m-0">
+            <fa-icon [icon]="icons.faLock" class="mr-1"></fa-icon>
+            <span class="small">Lock</span>
+          </a>
+          <a href="javascript:;" class="nav-link text-truncate m-0" (click)="logout()">
+            <fa-icon [icon]="icons.faSignOutAlt" class="mr-1"></fa-icon>
+            <span class="small">Logout</span>
+          </a>
+        </nav>
+      </div>
+    </div>
+
+    <ng-container *ngFor="let group of navGroups | permitted">
+      <div class="nav-header">
+        <span>{{ group.title }}</span>
+      </div>
+
+      <prx-sidenav-item
+        *ngFor="let option of group.items"
+        [option]="option"
+        [collapsed]="collapsed"
+        [hover]="hover"
+      ></prx-sidenav-item>
+    </ng-container>
+  </nav>
+</div> -->

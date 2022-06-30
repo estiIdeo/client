@@ -1,0 +1,58 @@
+@import "import";
+
+:host {
+  &.no-margin {
+    .breadcrumb {
+      margin: 0;
+    }
+  }
+
+  &.clean {
+    .breadcrumb {
+      border-radius: 0;
+      background-color: transparent;
+    }
+  }
+
+  &.dark {
+    .breadcrumb-link {
+      color: $gray-300;
+    }
+
+    .breadcrumb-item {
+      &.active {
+        color: $color-contrast;
+      }
+    }
+  }
+
+  .side-bar {
+    .breadcrumb {
+      padding: 1.5rem 0 1rem 0 !important;
+      margin-bottom: 0;
+      background: #f1f4f8;
+    }
+  }
+}
+
+.breadcrumb-item {
+  &:before {
+    float: none !important;
+    padding: 0.5rem;
+  }
+}
+
+.custom-separator {
+  .breadcrumb-item {
+    + .breadcrumb-item {
+      &:before {
+        display: none;
+      }
+    }
+  }
+
+  .breadcrumb-separator {
+    padding-right: $breadcrumb-item-padding;
+    color: $breadcrumb-divider-color;
+  }
+}

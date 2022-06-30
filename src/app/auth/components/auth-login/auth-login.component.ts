@@ -12,6 +12,8 @@ import { AuthenticationService } from '@app/@core/authentication/authentication.
 import { Logger } from '@app/@core/logger.service';
 
 const log = new Logger('Login');
+import { Observable } from 'rxjs';
+import { User } from '@app/models/user';
 
 @Component({
   selector: 'prx-auth-login',

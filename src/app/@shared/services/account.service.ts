@@ -1,4 +1,5 @@
 import { EventEmitter, Injectable } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 import { Observable, BehaviorSubject, throwError, of } from 'rxjs';
 import { AuthenticationResponseModel } from '../models/authentication.response';
 import { environment } from '../../../environments/environment';
@@ -7,7 +8,6 @@ import { startWith, switchMap, tap, map } from 'rxjs/operators';
 import { CacheKeys } from '@app/@ideo/infrastructure/services/storage-keys.service';
 import { IPagedList } from '../models/paged-list.response';
 import { RolesType } from '../types/role.type';
-import { HttpClient } from '@angular/common/http';
 
 interface PermissionDateModal {
   [key: string]: string[];
@@ -123,7 +123,6 @@ export class AccountService {
     model: { username: string; password: string },
     params: { otp: string } = null
   ): Observable<AuthenticationResponseModel> {
-      debugger
     return this.http
       .post<AuthenticationResponseModel>(`${environment.serverUrl}/api/Account/Authenticate`, model, { params })
       .pipe(

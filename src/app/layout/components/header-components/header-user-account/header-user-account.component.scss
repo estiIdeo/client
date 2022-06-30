@@ -1,0 +1,16 @@
+.acronym {
+  padding: 7px;
+  border-radius: 50%;
+  color: #fff;
+  font-size: 0.8rem;
+
+  &.big {
+    padding: 10px;
+    font-size: 1rem;
+    margin-right: 0.3125rem;
+  }
+}
+
+.user-avatar{
+  max-width: 3rem;
+}

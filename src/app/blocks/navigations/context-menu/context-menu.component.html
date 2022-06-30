@@ -1,0 +1,14 @@
+<div class="menu-dropdown" dropdown [placement]="placement" [container]="appendToBody ? 'body' : ''">
+  <prx-nav-link class="dropdown-toggle" dropdownToggle>
+    <div #iconView *ngIf="!iconHidden; else withIcon">
+      <ng-content select="[menu-icon]"></ng-content>
+    </div>
+
+    <ng-template #withIcon>
+      <prx-icon [icon]="icon"></prx-icon>
+    </ng-template>
+  </prx-nav-link>
+  <div [ngStyle]="{'inset':''}"  *dropdownMenu [ngClass]="{'dropdown-menu-right': menuPlacement == 'right', 'dropdown-menu-left': menuPlacement == 'left'}" class="dropdown-menu py-2">
+    <ng-content></ng-content>
+  </div>
+</div>
