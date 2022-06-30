@@ -1,15 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { Router, ActivatedRoute, Params } from '@angular/router';
+
 import { faCheck, faLongArrowAltRight } from '@fortawesome/free-solid-svg-icons';
 import { faUser, faArrowAltCircleRight } from '@fortawesome/free-regular-svg-icons';
 import { finalize } from 'rxjs/operators';
+import { TokenService } from '../../../@core/authentication/token.service';
 import { BaseFormComponent } from '@app/@core/base/base-form-component';
-import { Store } from '@ngrx/store';
-import { Login } from '@app/state/auth.actions';
-import { Observable } from 'rxjs';
-import { IAppState, selectAuthState } from '@app/state/auth.state';
-import { User } from '@app/models/user';
+import { RedirectService } from '@app/@shared/services/redirect.service';
+import { AuthenticationService } from '@app/@core/authentication/authentication.service';
+import { Logger } from '@app/@core/logger.service';
+
+const log = new Logger('Login');
 
 @Component({
   selector: 'prx-auth-login',
@@ -23,31 +25,64 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
   check = faCheck;
   formState: string;
   public warning: string;
-  user: User = new User();
-  state: Observable<any>
+
   constructor(
+    //private router: Router,
+    private _redirect: RedirectService,
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private store: Store<IAppState>
+    private authenticationService: AuthenticationService,
+    private tokenService: TokenService,
   ) {
     super();
     this.isLoading = false;
-    this.state = this.store.select(selectAuthState);
     this.createForm();
   }
 
   ngOnInit() {
-    // if (this.tokenService.isTokenActive()) {
-    //   this.router.navigate(['/home']);
-    // }
+    if (this.tokenService.isTokenActive()) {
+      this.router.navigate(['/home']);
+    }
   }
+
+  /**
+   * Logs-in the user
+   * @param form The form value: user + password
+   */
   login({ valid, value }: { valid: boolean; value: any }) {
-    console.log(value);
-    this.user.username=value.username
-    this.user.password=value.password
-    this.store.dispatch(new Login(value));
+    debugger
+    if (valid) {
+      this.isLoading = true;
+      this.authenticationService.login(value).pipe(
+        finalize(() => {
+          this.form.markAsPristine();
+          this.isLoading = false;
+        })).subscribe(
+          (credentials) => {
+            log.debug(`${credentials.username} successfully logged in`);
+            this.route.queryParams.subscribe((params) => this.redirect(params));
+          },
+          (error) => {
+            if (error?.type == '2FA') {
+              this.initMultifa();
+            } else {
+              log.debug(`Login error: ${error}`);
+              this.error = this.formState == 'otp' ? 'Portal.Auth.Login.Form.Information.EnterOtp' : 'Portal.Auth.Login.Form.Errors.IncorrectUserOrPassword';
+            }
+          }
+        );
+    }
   }
+
+  public redirect(params: Params) {
+    if (params.redirect) {
+      this._redirect.to(params.redirect, { replaceUrl: true });
+    } else {
+      this._redirect.toHome();
+    }
+  }
+
   private createForm() {
     this.form = this.formBuilder.group({
       username: ['example@demo.com', Validators.required],
@@ -56,11 +91,18 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
       otp: [],
     });
   }
+  private initMultifa() {
+    this.form.get('otp').setValidators([Validators.required, Validators.minLength(6)]);
+    this.warning = 'Portal.Auth.Login.Form.Warnings.MFA';
+    this.error = '';
+    this.formState = 'otp';
+  }
+
   public endMultifa() {
     const otpControl = this.form.get('otp')
-    otpControl!.reset()
-    otpControl!.clearValidators()
-    otpControl!.updateValueAndValidity()
+    otpControl.reset()
+    otpControl.clearValidators()
+    otpControl.updateValueAndValidity()
     this.error = '';
     this.warning = '';
     this.formState = '';
