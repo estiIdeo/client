@@ -1,0 +1,10 @@
+:host {
+  position: relative;
+  display: flex;
+
+  .dropdown-toggle {
+    &:after {
+      display: none;
+    }
+  }
+}

@@ -1,0 +1,14 @@
+<footer class="main-footer">
+  <div class="container-fluid d-flex justify-content-between small">
+    <span>
+      {{ 'Portal.Footer.AllRightsReserved' | translate }}
+      {{ 'Portal.Footer.AppName' | translate }} LTD. &copy; {{ date | date: 'yyyy' }} |
+      {{ "Portal.Footer.PoweredBy" | translate }}
+      <a href="https://www.weshareit.co.il/" target="_blank" translate><strong
+          translate>Portal.Footer.AppName</strong></a>
+    </span>
+    <span *ngVar="updatedAt | date : 'MMM d, y, h:mm a' as date" class="text-dark"
+      [tooltip]="!!date ? ('Portal.Footer.UpdatedAt' | translate : {date :  date }) : ''">v{{
+      version }}</span>
+  </div>
+</footer>

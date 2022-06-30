@@ -1,15 +1,14 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ActivatedRoute, Params } from '@angular/router';
-
-import { faLongArrowAltRight, faUser, faArrowAltCircleRight, faCheck } from '@fortawesome/free-solid-svg-icons';
 import { finalize } from 'rxjs/operators';
 import { AccountService } from '../../../@shared/services/account.service';
 import { CredentialsService } from '../../../@core/authentication/credentials.service';
 import { Logger } from '@app/@core/logger.service';
-import { BaseFormComponent } from '@app/@core/base/base-form-component';
 import { RedirectService } from '@app/@shared/services/redirect.service';
 import { AuthenticationService } from '@app/@core/authentication/authentication.service';
+import { BaseFormComponent } from '@app/@core/base/base-form-component';
+import { faLongArrowAltRight, faUser, faArrowAltCircleRight, faCheck } from '@fortawesome/free-solid-svg-icons';
 
 const log = new Logger('ResetPassword');
 
