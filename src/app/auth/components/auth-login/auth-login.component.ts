@@ -23,7 +23,6 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
   faUser = faUser;
   faArrowAltCircleRight = faArrowAltCircleRight;
   check = faCheck;
-  formState: string;
   public warning: string;
 
   constructor(
@@ -65,10 +64,9 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
           },
           (error) => {
             if (error?.type == '2FA') {
-              this.initMultifa();
+              // this.initMultifa();
             } else {
               log.debug(`Login error: ${error}`);
-              this.error = this.formState == 'otp' ? 'Portal.Auth.Login.Form.Information.EnterOtp' : 'Portal.Auth.Login.Form.Errors.IncorrectUserOrPassword';
             }
           }
         );
@@ -88,23 +86,7 @@ export class AuthLoginComponent extends BaseFormComponent implements OnInit {
       username: ['example@demo.com', Validators.required],
       password: ['123456', Validators.required],
       remember: false,
-      otp: [],
     });
   }
-  private initMultifa() {
-    this.form.get('otp').setValidators([Validators.required, Validators.minLength(6)]);
-    this.warning = 'Portal.Auth.Login.Form.Warnings.MFA';
-    this.error = '';
-    this.formState = 'otp';
-  }
 
-  public endMultifa() {
-    const otpControl = this.form.get('otp')
-    otpControl.reset()
-    otpControl.clearValidators()
-    otpControl.updateValueAndValidity()
-    this.error = '';
-    this.warning = '';
-    this.formState = '';
-  }
 }
