@@ -1,5 +1,6 @@
 import { Component, OnInit, HostBinding } from '@angular/core';
-import { LayoutService, Layouts } from '@core';
+import { Layouts } from '@app/@core/models/layout.model';
+import { LayoutService } from '@app/@core/services/layout.service';
 
 @Component({
   selector: 'prx-main-body',

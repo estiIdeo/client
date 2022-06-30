@@ -38,7 +38,7 @@ export class LocaleResourceFormComponentResolverService implements Resolve<PageF
           return this.localeResourcesService.create(model);
         }
       },
-      getEntityById: (id) =>
+    /*  getEntityById: (id) =>
         this.localeResourcesService.get(id).pipe(
           tap((x) => {
             if (!!isEdit) {
@@ -46,7 +46,7 @@ export class LocaleResourceFormComponentResolverService implements Resolve<PageF
             }
             return x;
           })
-        ),
+        ),*/
     } as PageFormConfig;
 
     return pageConfig;

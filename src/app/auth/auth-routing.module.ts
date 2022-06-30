@@ -12,7 +12,7 @@ const routes: Routes = [
     path: '',
     component: AuthShellComponent,
     children: [
-      { path: '', redirectTo: '/login', pathMatch: 'full' },
+     // { path: '', redirectTo: '/login', pathMatch: 'full' },
       { path: 'login', component: AuthLoginComponent, data: { title:'Login' } },
       { path: 'reset-password', component: ResetPasswordComponent, data: { title: 'Reset Password' } },
       { path: 'register', component: AuthRegisterComponent, data: { title: 'Register' } },

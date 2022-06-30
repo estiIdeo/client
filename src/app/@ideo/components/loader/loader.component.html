@@ -1,0 +1,104 @@
+<ng-container *ngIf="isLoading">
+  <div *ngFor="let i of items" class="placeholder-container placeholder--{{ template }}">
+    <ng-container [ngSwitch]="template">
+
+
+      <ng-container *ngSwitchCase="'user-messages'">
+        <ng-container *ngTemplateOutlet="userMessages"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'picker'">
+        <ng-container *ngTemplateOutlet="userMessages"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'notifications'">
+        <ng-container *ngTemplateOutlet="notifications"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'list'">
+        <ng-container *ngTemplateOutlet="list"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'message'">
+        <ng-container *ngTemplateOutlet="list"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'subTitle'">
+        <ng-container *ngTemplateOutlet="list"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'table'">
+        <ng-container *ngTemplateOutlet="table"></ng-container>
+      </ng-container>
+      <ng-container *ngSwitchCase="'product'">
+        <ng-container *ngTemplateOutlet="product"></ng-container>
+      </ng-container>
+
+
+      <ng-template #userMessages>
+        <div class="placeholder--user-avatar mr-3">
+          <div class="placeholder-bar rounded-circle w-40px h-40px"></div>
+        </div>
+        <div class="placeholder-content">
+          <div class="placeholder-bar placeholder-title"></div>
+          <div class="placeholder-bar placeholder-item--text w-40"></div>
+        </div>
+      </ng-template>
+
+
+      <ng-template #notifications>
+        <div class="placeholder--notification-icon mr-3">
+          <div class="placeholder-bar w-20px h-20px"></div>
+        </div>
+
+        <div class="placeholder-content">
+          <div class="placeholder-bar placeholder-title"></div>
+          <div class="placeholder-bar placeholder-item--text w-40"></div>
+        </div>
+      </ng-template>
+
+
+      <ng-template #list>
+        <div class="placeholder-content">
+          <div class="placeholder-bar placeholder-title w-80"></div>
+          <div class="placeholder-bar placeholder-item--text"></div>
+          <div class="placeholder-bar placeholder-item--text w-40"></div>
+        </div>
+      </ng-template>
+
+      <ng-template #table>
+        <div class="placeholder-content">
+          <div class="placeholder-bar placeholder-title"></div>
+          <div class="placeholder-bar placeholder-item--text w-40"></div>
+        </div>
+
+        <div class="placeholder--table-cell ml-3">
+          <div class="placeholder-bar placeholder-title w-80px"></div>
+        </div>
+
+        <div class="placeholder--table-cell ml-3">
+          <div class="placeholder-bar placeholder-title w-80px"></div>
+        </div>
+
+        <div class="placeholder--table-cell ml-3">
+          <div class="placeholder-bar placeholder-title w-80px"></div>
+        </div>
+      </ng-template>
+
+
+      <ng-template #product>
+        <div class="placeholder-content">
+          <div class="placeholder--product-img">
+            <div class="placeholder-bar w-100 h-80px mb-4"></div>
+          </div>
+          <div class="placeholder-bar placeholder-title"></div>
+          <div class="placeholder-bar placeholder-item--text w-40"></div>
+        </div>
+      </ng-template>
+
+    </ng-container>
+  </div>
+</ng-container>
+
+
+
+
+<!-- <div #noData>
+  <p>
+    {{ emptyMessage }} <a [routerLink]="[emptyUrl]" *ngIf="emptyUrl"> <span>Start</span> </a>
+  </p>
+</div> -->

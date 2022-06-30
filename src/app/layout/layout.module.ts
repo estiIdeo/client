@@ -1,14 +1,10 @@
 import { NgModule } from '@angular/core';
-import { SharedModule } from '@shared';
-import { NavigationsModule } from '@app/blocks/navigations/navigations.module';
 // Layout specific components
 import { MainBodyComponent } from './components/main-body/main-body.component';
 import { MenuTogglerComponent } from './components/menu-toggler/menu-toggler.component';
 import { HeaderComponent } from './components/header-components/header/header.component';
 import { HeaderSearchComponent } from './components/header-components/header-search/header-search.component';
 import { HeaderMenuAppsComponent } from './components/header-components/header-menu-apps/header-menu-apps.component';
-import { HeaderMenuMessagesComponent } from './components/header-components/header-menu-messages/header-menu-messages.component';
-import { HeaderMenuNotificationsComponent } from './components/header-components/header-menu-notifications/header-menu-notifications.component';
 import { HeaderUserAccountComponent } from './components/header-components/header-user-account/header-user-account.component';
 import { QuickSidenavComponent } from './components/quick-sidenav-components/quick-sidenav/quick-sidenav.component';
 // import { SidenavComponent } from './components/sidenav-components/sidenav/sidenav.component';
@@ -23,9 +19,11 @@ import { HeaderNavbarItemComponent } from './components/header-components/header
 
 // Main Layout Components, will be exported to be used in the Shell
 import { HorizontalLayoutDefaultComponent } from './horizontal/horizontal-layout-default/horizontal-layout-default.component';
-import { LoaderModule } from '../@ideo/components/loader/loader.module';
 import { IdeoPipesModule } from '@app/@ideo/infrastructure/pipes/pipes.module';
-import { UtilsModule } from '../blocks/utils/utils.module';
+import { NavigationsModule } from '@app/blocks/navigations/navigations.module';
+import { SharedModule } from '@app/@shared/shared.module';
+import { UtilsModule } from '@app/blocks/utils/utils.module';
+import { LoaderModule } from '@app/@ideo/components/loader/loader.module';
 
 const exports = [HorizontalLayoutDefaultComponent];
 
@@ -35,8 +33,6 @@ const exports = [HorizontalLayoutDefaultComponent];
     HeaderComponent,
     HeaderSearchComponent,
     HeaderMenuAppsComponent,
-    HeaderMenuMessagesComponent,
-    HeaderMenuNotificationsComponent,
     HeaderUserAccountComponent,
     QuickSidenavComponent,
     // SidenavComponent,

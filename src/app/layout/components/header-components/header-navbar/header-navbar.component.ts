@@ -1,8 +1,8 @@
 import { Component, OnInit, Input, HostBinding, Output, EventEmitter, OnDestroy } from '@angular/core';
-import { BaseComponent } from '@core';
 import { NavigationService } from '@app/layout/services/navigation.service';
 import { NavigationOptions } from '@app/layout/models/navigation';
 import { untilDestroyed } from '../../../../@core/until-destroyed';
+import { BaseComponent } from '@app/@core/base/base-component';
 
 @Component({
   selector: 'prx-header-navbar',

@@ -1,6 +1,7 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { AuthenticationService, BaseComponent } from '@core';
 import { Router } from '@angular/router';
+import { AuthenticationService } from '@app/@core/authentication/authentication.service';
+import { BaseComponent } from '@app/@core/base/base-component';
 import { AuthenticationResponseModel } from '../../../../@shared/models/authentication.response';
 import { AccountService } from '../../../../@shared/services/account.service';
 
@@ -25,6 +26,6 @@ export class HeaderUserAccountComponent extends BaseComponent implements OnInit 
   ngOnInit() { }
 
   logout() {
-    this.authenticationService.logout(true);
+    // this.authenticationService.logout(true);
   }
 }

@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from '@angular/core';
+import { BaseComponent } from '@app/@core/base/base-component';
 import { faBars, faAlignRight } from '@fortawesome/free-solid-svg-icons';
-import { BaseComponent } from '@core';
 
 @Component({
   selector: 'prx-header-toolbar',
