@@ -121,10 +121,9 @@ export class AccountService {
 
   public authenticate(
     model: { username: string; password: string },
-    params: { otp: string } = null
   ): Observable<AuthenticationResponseModel> {
     return this.http
-      .post<AuthenticationResponseModel>(`${environment.serverUrl}/api/Account/Authenticate`, model, { params })
+      .post<AuthenticationResponseModel>(`${environment.serverUrl}/api/Account/Authenticate`, model)
       .pipe(
         switchMap((user) => (user.type == '2FA' ? throwError(user) : of(user))),
         tap((u) => {

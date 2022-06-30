@@ -55,9 +55,9 @@ export class AuthenticationService {
       username: context.username,
       password: context.password,
     };
-    const params = !context.otp ? null : { otp: context.otp };
-    return this.accountService.authenticate(request, params).pipe(
+    return this.accountService.authenticate(request).pipe(
       tap((x) => {
+        debugger
         this.cleanBetweenAuthenticate();
         return this.credentialsService.setCredentials(x, context.remember)
       }),
