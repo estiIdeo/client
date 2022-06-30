@@ -15,9 +15,9 @@ import { CharFilterComponent } from '../table-filters/char-filter/char-filter.co
 })
 export class TableFiltersService {
   private comparisonOptions: SelectItemStore<Type<TableFilterInput>>[] = [
-    { label: 'Portal.Common.Filters.Contains', value: MatchMode.Contains, useOn: [TextFilterComponent] },
+    { label: 'Common.Filters.Contains', value: MatchMode.Contains, useOn: [TextFilterComponent] },
     {
-      label: 'Portal.Common.Filters.Equals',
+      label: 'Common.Filters.Equals',
       value: MatchMode.Equals,
       useOn: [
         MultiselectFilterComponent,
@@ -28,21 +28,21 @@ export class TableFiltersService {
       ],
     },
     {
-      label: 'Portal.Common.Filters.NotEquals',
+      label: 'Common.Filters.NotEquals',
       value: MatchMode.NotEquals,
       useOn: [TextFilterComponent, NumericFilterComponent, SelectFilterComponent,CharFilterComponent],
     },
-    { label: 'Portal.Common.Filters.LessThan', value: MatchMode.LessThan, useOn: [NumericFilterComponent] },
-    { label: 'Portal.Common.Filters.LessThanOrEquals', value: MatchMode.LessThanOrEquals, useOn: [NumericFilterComponent] },
-    { label: 'Portal.Common.Filters.GreaterThan', value: MatchMode.GreaterThan, useOn: [NumericFilterComponent] },
-    { label: 'Portal.Common.Filters.GreaterThanOrEquals', value: MatchMode.GreaterThanOrEquals, useOn: [NumericFilterComponent] },
-    { label: 'Portal.Common.Filters.Before', value: MatchMode.Before, useOn: [CalendarFilterComponent] },
-    { label: 'Portal.Common.Filters.BeforeOrEquals', value: MatchMode.BeforeOrEquals, useOn: [CalendarFilterComponent] },
-    { label: 'Portal.Common.Filters.After', value: MatchMode.After, useOn: [CalendarFilterComponent] },
-    { label: 'Portal.Common.Filters.AfterOrEquals', value: MatchMode.EqualsOrAfter, useOn: [CalendarFilterComponent] },
-    { label: 'Portal.Common.Filters.StartsWith', value: MatchMode.StartsWith, useOn: [TextFilterComponent] },
-    { label: 'Portal.Common.Filters.EndsWith', value: MatchMode.EndsWith, useOn: [TextFilterComponent] },
-    { label: 'Portal.Common.Filters.Any', value: MatchMode.Any, useOn: [RelatedFilterComponent] },
+    { label: 'Common.Filters.LessThan', value: MatchMode.LessThan, useOn: [NumericFilterComponent] },
+    { label: 'Common.Filters.LessThanOrEquals', value: MatchMode.LessThanOrEquals, useOn: [NumericFilterComponent] },
+    { label: 'Common.Filters.GreaterThan', value: MatchMode.GreaterThan, useOn: [NumericFilterComponent] },
+    { label: 'Common.Filters.GreaterThanOrEquals', value: MatchMode.GreaterThanOrEquals, useOn: [NumericFilterComponent] },
+    { label: 'Common.Filters.Before', value: MatchMode.Before, useOn: [CalendarFilterComponent] },
+    { label: 'Common.Filters.BeforeOrEquals', value: MatchMode.BeforeOrEquals, useOn: [CalendarFilterComponent] },
+    { label: 'Common.Filters.After', value: MatchMode.After, useOn: [CalendarFilterComponent] },
+    { label: 'Common.Filters.AfterOrEquals', value: MatchMode.EqualsOrAfter, useOn: [CalendarFilterComponent] },
+    { label: 'Common.Filters.StartsWith', value: MatchMode.StartsWith, useOn: [TextFilterComponent] },
+    { label: 'Common.Filters.EndsWith', value: MatchMode.EndsWith, useOn: [TextFilterComponent] },
+    { label: 'Common.Filters.Any', value: MatchMode.Any, useOn: [RelatedFilterComponent] },
   ];
 
   constructor() {}

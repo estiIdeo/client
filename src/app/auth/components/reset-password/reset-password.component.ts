@@ -115,7 +115,7 @@ export class ResetPasswordComponent extends BaseFormComponent implements OnInit 
   }
   private initMultifa() {
     this.form.get('otp').setValidators([Validators.required, Validators.minLength(6)]);
-    this.warning = 'Portal.Auth.Login.Form.Warnings.MFA';
+    this.warning = 'Auth.Login.Form.Warnings.MFA';
     this.error = '';
     this.formState = 'otp';
   }

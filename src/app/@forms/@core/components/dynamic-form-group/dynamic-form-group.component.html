@@ -16,7 +16,7 @@
   <ng-container *ngIf="!!showSubmitButton && !!form">
     <button *ngIf="!submitting; else submittingIndicator" type="submit" class="btn btn-primary" [disabled]="!form.valid"
       translate>
-      {{ submitText || 'Portal.Common.SubmitBtn' }}
+      {{ submitText || 'Common.SubmitBtn' }}
     </button>
     <ng-template #submittingIndicator>
       <button class="btn btn-primary" [disabled]="true">
@@ -25,6 +25,6 @@
     </ng-template>
   </ng-container>
   <button *ngIf="!!showCancelButton && !!form" type="button" class="btn btn-info" (click)="cancel()" translate>
-    {{ cancelText || 'Portal.Common.CancelBtn' }}
+    {{ cancelText || 'Common.CancelBtn' }}
   </button>
 </form>

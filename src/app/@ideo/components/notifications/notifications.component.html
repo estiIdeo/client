@@ -3,7 +3,7 @@
     <li *ngFor="let notification of notifications" class="{{ notification.type }} border p-3">
       <button type="button" class="toast-close-button" role="button" (click)="close(notification)">×</button>
       <i class="{{ notification.type }}"></i>
-      <h5 style="color: #fff" translate>Portal.Notifications.NotificationType.{{ notification?.type }}</h5>
+      <h5 style="color: #fff" translate>Notifications.NotificationType.{{ notification?.type }}</h5>
       <p
         [innerHTML]="notification?.content"
         [translateParams]="notification.translateParamObject | translateParams"

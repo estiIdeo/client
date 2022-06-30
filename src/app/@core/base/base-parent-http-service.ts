@@ -15,7 +15,7 @@ export interface AssignFleetsPatchFuncModel {
 export abstract class BaseParentHttpService<TParentId, T> {
   public abstract collationName: string;
   public get entityName(): string {
-    return 'Portal.Common.Api.' + this.collationName?.replace('/', '.')
+    return 'Common.Api.' + this.collationName?.replace('/', '.')
   }
   public abstract parentRoute: string;
   public apiUrl(parentId: TParentId) {
