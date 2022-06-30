@@ -9,22 +9,22 @@ import { AuthActionTypes, Login, LoginFailure, LoginSuccess } from "./auth.actio
 @Injectable()
 export class AuthEffects {  
  
-    @Effect()
-    LoginIn: Observable<any> = this.actions.pipe(
-      ofType(AuthActionTypes.LOGIN),
-      map((action: Login) => action.payload),
-      switchMap(payload => {
-        debugger
-        return this.authService.loginIn(payload).pipe(
-          map((user: any) => {
-            return new LoginSuccess({token: user.token, email: payload.username});
-          }),
-          catchError((error) => {
-            return of(new LoginFailure({error}));
-          })
-        )
-      })
-    )
+    // @Effect()
+    // LoginIn: Observable<any> = this.actions.pipe(
+    //   ofType(AuthActionTypes.LOGIN),
+    //   map((action: Login) => action.payload),
+    //   switchMap(payload => {
+    //     debugger
+    //     return this.authService.loginIn(payload).pipe(
+    //       map((user: any) => {
+    //         return new LoginSuccess({token: user.token, email: payload.username});
+    //       }),
+    //       catchError((error) => {
+    //         return of(new LoginFailure({error}));
+    //       })
+    //     )
+    //   })
+    // )
     @Effect({dispatch: false})
     LoginSuccess: Observable<any> = this.actions.pipe(
       ofType(AuthActionTypes.LOGIN_SUCCESS),
