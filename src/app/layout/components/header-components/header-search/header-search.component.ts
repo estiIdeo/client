@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { BaseComponent } from '@app/@core/base/base-component';
 import { faSearch } from '@fortawesome/free-solid-svg-icons';
-import { BaseComponent } from '@core';
 
 @Component({
   selector: 'prx-header-search',

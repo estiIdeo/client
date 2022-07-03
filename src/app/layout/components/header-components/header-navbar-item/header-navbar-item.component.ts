@@ -1,9 +1,10 @@
 import { Component, OnInit, Input, HostBinding, HostListener, Output, EventEmitter } from '@angular/core';
 import { faAngleLeft, faAngleRight } from '@fortawesome/free-solid-svg-icons';
 import { NavigationOptions } from '@app/layout/models/navigation';
-import { BaseComponent, Logger } from '@core';
 import { TranslateService } from '@ngx-translate/core';
 import { I18nService } from '../../../../i18n/i18n.service';
+import { BaseComponent } from '@app/@core/base/base-component';
+import { Logger } from '@app/@core/logger.service';
 
 const logger = new Logger('HeaderNavbarItemComponent');
 

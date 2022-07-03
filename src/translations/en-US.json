@@ -84,6 +84,7 @@
     "Navigation.Localization": "Localization",
     "Navigation.LocaleResources": "Locale Resources",
     "Navigation.LocaleResource": "Locale Resource",
+    "Navigation.Dashboard": "Dashboard",
    
     "Share.Modal.Mode.Edit.Entity": "Edit {{entityName}}",
    
@@ -93,6 +94,8 @@
     "Auth.Login.Form.Fields.Password.Reqiured": "Password is required",
     "Auth.Login.Form.Fields.OTP.Title": "Enter 6 digit OTP verification code",
     "Auth.Login.Form.Fields.OTP.Reqiured": "Verification code is required",
+    "Auth.Login.Form.Information.EnterOtp": "Please re-enter the verification code",
+    "Auth.Login.Form.Errors.IncorrectUserOrPassword": "Username or password is incorrect",
     "Auth.Login.Welcome.Title": "Welcome",
     "Auth.Login.DifferentPassword": "Enter a different password",
    
@@ -114,6 +117,14 @@
     "Configuration.LocaleResources.Table.Language": "Language",
     "Configuration.LocaleResources.Table.Value": "Value",
     "Configuration.LocaleResources.Table.Header.Create": "Create Locale Resources",
-    "Configuration.LocaleResources.Table.Header.Title": "Locale Resources"
+    "Configuration.LocaleResources.Table.Header.Title": "Locale Resources",
+
+    "Footer.AppName": "Test",
+    "Footer.AllRightsReserved": "All Rights Reserved",
+    "Footer.PoweredBy": "powered by",
+    "Footer.UpdatedAt": "Updated At {{ date }}",
+
+    "More.Setting.Language": "Language"
+
 
 }

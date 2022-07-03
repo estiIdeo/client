@@ -1,5 +1,4 @@
 import { Component, OnChanges, Input } from '@angular/core';
-import { ModalMessage } from '@app/@core/models/modal-message';
 import { IntelligenceKeys } from '../../../@shared/types/IntelligenceKeys.type';
 
 @Component({
@@ -12,7 +11,7 @@ export class LoaderComponent implements OnChanges {
   @Input() isLoading = true;
 
   // Which template to use
-  @Input() template: 'product' | 'table' | 'notifications' | 'list' | 'user-messages' | ModalMessage['bodyOrder'][number];
+  @Input() template: 'product' | 'table' | 'notifications' | 'list' | 'user-messages' ;//| ModalMessage['bodyOrder'][number];
 
   // Total number of bars-groups to use
   @Input() count: number = 5;

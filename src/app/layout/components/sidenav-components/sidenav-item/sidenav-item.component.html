@@ -25,6 +25,7 @@
   </a>
 
   <nav class="nav-dropdown-items">
-    <prx-sidenav-item *ngFor="let item of option.items | permitted" [option]="item"></prx-sidenav-item>
+    <prx-sidenav-item *ngFor="let item of option.items" [option]="item"></prx-sidenav-item>
+     <!-- | permitted -->
   </nav>
 </ng-template>

@@ -8,8 +8,8 @@ import { environment } from '@env/environment';
 })
 export class FooterComponent implements OnInit {
   public date: Date = new Date();
-  public version: string = environment.version;
-  public updatedAt: string = environment.timeStamp;
+  public version: string = null;//environment.version;
+  public updatedAt: string = null;//environment.timeStamp;
   constructor() { }
 
   ngOnInit() { }

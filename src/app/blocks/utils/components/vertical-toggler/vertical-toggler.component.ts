@@ -1,6 +1,7 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
 import { faChevronDown } from '@fortawesome/free-solid-svg-icons';
-import { BaseComponent } from '@core';
+import { BaseComponent } from '@app/@core/base/base-component';
+
 
 @Component({
   selector: 'prx-vertical-toggler',

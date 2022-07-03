@@ -13,19 +13,13 @@ import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { TranslateModule } from '@ngx-translate/core';
 import { FormPagedComponent } from './components/form-paged/form-paged.component';
+import { VarDirective } from './directives/var.directive';
 const exportModules = [
-  // external modules
-
   CommonModule,
   HttpClientModule,
- RouterModule,
+  RouterModule,
   TranslateModule,
-  // PerfectScrollbarModule,
-
-  // custom modules
-  // DynamicComponentModule,
   BootstrapModule,
- // CardsModule,
   IconsModule,
   FormControlsModule,
   IdeoKeyFilterModule,
@@ -35,7 +29,8 @@ const exportModules = [
   providers: [CurrencyPipe],
   declarations: [
     FormPagedComponent,
-  /*  UnsanitizePipe,
+    VarDirective,
+    /*  UnsanitizePipe,
     GroupByPipe,
     TabledPageComponent,
     DeleteModalComponent,
@@ -58,35 +53,31 @@ const exportModules = [
     PickerComponent,
     TagsComponent,
     WsiImagePopoverComponent,
-    VarDirective,
     WsiMoreButtonsComponent,
     MapModalComponent,
     FormModalComponent,*/
-    // SearchInputComponent,    
+    // SearchInputComponent,
   ],
   imports: [
     ...exportModules,
-  //  UtilsModule,
-  //  NgbPopoverModule,
-   // NavigationsModule,
+    //  UtilsModule,
+    //  NgbPopoverModule,
+    // NavigationsModule,
     IdeoFormsModule,
     TableModule,
-   // TranslateModule,
-  //  LoaderModule,
+    TranslateModule,
+    //  LoaderModule,
     ButtonModule,
     IdeoPipesModule,
-   // NgbDropdownModule,
-  //  NgbTooltipModule,
-  //  NgxDropzoneModule,
-   // ScrollingModule,
+    // NgbDropdownModule,
+    //  NgbTooltipModule,
+    //  NgxDropzoneModule,
+    // ScrollingModule,
     SelectModule,
-  //  IdeoDirectivesModule,
-  //  AgmCoreModule,
-   // NgbPaginationModule
+    //  IdeoDirectivesModule,
+    //  AgmCoreModule,
+    // NgbPaginationModule
   ],
-  exports: [
-    ...exportModules,
-  
-  ],
+  exports: [...exportModules, VarDirective],
 })
-export class SharedModule { }
+export class SharedModule {}

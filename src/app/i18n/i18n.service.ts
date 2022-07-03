@@ -97,7 +97,7 @@ export class I18nService {
 
   constructor(private translateService: TranslateService, private localeResourcesService: LocaleResourcesService
     , private rtlService: RtlService) {
-    this.setTranslation(true);
+      this.setTranslation(true);
   }
 
   /**

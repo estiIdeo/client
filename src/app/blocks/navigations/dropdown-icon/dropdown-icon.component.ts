@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { BaseComponent } from '@core';
+import { BaseComponent } from '@app/@core/base/base-component';
+
 import { faAngleDown } from '@fortawesome/free-solid-svg-icons';
 
 @Component({
