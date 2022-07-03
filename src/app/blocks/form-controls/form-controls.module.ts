@@ -5,13 +5,14 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { ButtonComponent } from './button/button.component';
 import { ButtonLanguageSelectorComponent } from './button-language-selector/button-language-selector.component';
 import { FontAwesomeModule } from '@fortawesome/angular-fontawesome';
+import { CheckboxComponent } from './checkbox/checkbox/checkbox.component';
 
 const exports = [
   ButtonComponent,
   ButtonLanguageSelectorComponent
 ];
 
-const exportsModule = [FormsModule, ReactiveFormsModule];
+const exportsModule = [FormsModule, ReactiveFormsModule,CheckboxComponent,ButtonComponent,ButtonLanguageSelectorComponent];
 
 @NgModule({
   declarations: [...exports],

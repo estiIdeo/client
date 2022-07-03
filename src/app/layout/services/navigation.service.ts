@@ -62,7 +62,6 @@ export class NavigationService implements OnDestroy {
   private get roles(): RolesType[] {
     return this.accountService.roles;
   }
-
   private get permmisionByRole() {
     this.permissionArray = [];
     for (const [key, value] of Object.entries(this.accountService.permissions)) {
@@ -79,32 +78,7 @@ export class NavigationService implements OnDestroy {
   private set myRole(val: string) {
     this._myRole = val;
   }
-  private get role(): RolesType {
-    for (let i of this.roles) {
-      // debugger
-      switch (i) {
-        case 'Admin':
-          return i;
-        case 'PartnerAdmin':
-          return i;
-        case 'FleetManager':
-          return i;
-        default:
-          break;
-      }
-    }
-  }
 
-  private get parentId(): number {
-    switch (this.role) {
-      case 'Admin':
-      case 'PartnerAdmin':
-        return this.accountService.partnerId;
-      default:
-        return this.accountService.partnerId;
-        break;
-    }
-  }
 
   public navigationItems$: Subject<NavigationOptions[]> = new Subject<NavigationOptions[]>();
 

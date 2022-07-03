@@ -10,7 +10,5 @@ export interface AuthenticationResponseModel {
   validFrom: Date;
   validTo: Date;
   roles: RolesType[];
-  partnerId?: number;
   type: string;
-  partnerFleetIds?: { [partnerId: number]: number[] };
 }

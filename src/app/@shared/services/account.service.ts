@@ -59,25 +59,25 @@ export class AccountService {
     return !!currentUser ? currentUser.roles : [];
   }
 
-  public get partnerId(): number {
-    const currentUser = this.user;
-    // TODO: Please add default partner id to each user or option to select one !!!!!!
-    return (
-      this.selectedPartnerFleetObj?.partnerId || +Object.keys(this.partnerFleetIds || {})?.[0] || currentUser?.partnerId
-    );
-  }
+//   public get partnerId(): number {
+//     const currentUser = this.user;
+//     // TODO: Please add default partner id to each user or option to select one !!!!!!
+//     return (
+//       this.selectedPartnerFleetObj?.partnerId || +Object.keys(this.partnerFleetIds || {})?.[0] || currentUser?.partnerId
+//     );
+//   }
 
-  public get partnerFleetIds(): { [partnerId: number]: number[] } {
-    const currentUser = this.user;
-    return !!currentUser ? currentUser.partnerFleetIds : {};
-  }
+//   public get partnerFleetIds(): { [partnerId: number]: number[] } {
+//     const currentUser = this.user;
+//     return !!currentUser ? currentUser.partnerFleetIds : {};
+//   }
 
-  public get fleetIds(): number[] {
-    const currentUser = this.user;
-    return !!currentUser?.partnerFleetIds
-      ? currentUser.partnerFleetIds[this.partnerId]
-      : [];
-  }
+//   public get fleetIds(): number[] {
+//     const currentUser = this.user;
+//     return !!currentUser?.partnerFleetIds
+//       ? currentUser.partnerFleetIds[this.partnerId]
+//       : [];
+//   }
 
   public get selectedPartnerFleet(): { [partnerId: number]: number } {
     return JSON.parse(localStorage.getItem(CacheKeys.SELECTED_PARTNER_FLEET));
@@ -96,9 +96,6 @@ export class AccountService {
     }
   }
 
-  public get fleetId(): number {
-    return this.selectedPartnerFleetObj?.fleetId || this.partnerFleetIds?.[Object.keys(this.partnerFleetIds)?.[0]]?.[0];
-  }
 
   public get isLoggedIn(): boolean {
     return !!this.user;
@@ -124,10 +121,9 @@ export class AccountService {
 
   public authenticate(
     model: { username: string; password: string },
-    params: { otp: string } = null
   ): Observable<AuthenticationResponseModel> {
     return this.http
-      .post<AuthenticationResponseModel>(`${environment.serverUrl}/api/Account/Authenticate`, model, { params })
+      .post<AuthenticationResponseModel>(`${environment.serverUrl}/api/Account/Authenticate`, model)
       .pipe(
         switchMap((user) => (user.type == '2FA' ? throwError(user) : of(user))),
         tap((u) => {
