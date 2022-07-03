@@ -28,8 +28,9 @@
   </a>
 
   <nav class="nav-dropdown-items level-{{ level }} {{option?.style}}" [ngClass]="{ 'rtl' :isRtl  }">
-    <prx-header-navbar-item *ngFor="let item of option.items | permitted" [option]="item" [level]="level + 1"
-      (onToggle)="item.open = $event" class="dropdown-item">
+    <prx-header-navbar-item *ngFor="let item of option.items" [option]="item" [level]="level + 1"
+    (onToggle)="item.open = $event" class="dropdown-item">
+    <!-- | permitted -->
       <ng-container dropdown-icon>
         <prx-icon [icon]="!isRtl ? angleRight : angleLeft " class="dd-icon d-none d-md-block m-0"></prx-icon>
         <prx-dropdown-icon class="dd-icon d-block d-md-none" [open]="item.open"></prx-dropdown-icon>

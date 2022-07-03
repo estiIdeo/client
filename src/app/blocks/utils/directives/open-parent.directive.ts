@@ -1,6 +1,5 @@
 import { Directive, HostListener, ElementRef, Renderer2, Output, EventEmitter, OnInit, Input } from '@angular/core';
-
-import { Logger } from '@core';
+import { Logger } from '@app/@core/logger.service';
 const logger = new Logger('OpenParentDirective');
 
 @Directive({

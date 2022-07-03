@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseComponent } from '@core';
+import { BaseComponent } from '@app/@core/base/base-component';
+
 
 @Component({
   selector: 'prx-card-footer',

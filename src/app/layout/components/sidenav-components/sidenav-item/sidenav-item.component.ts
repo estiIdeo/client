@@ -1,6 +1,6 @@
 import { Component, OnInit, Input, HostBinding } from '@angular/core';
+import { BaseComponent } from '@app/@core/base/base-component';
 import { NavigationOptions } from '@app/layout/models/navigation';
-import { BaseComponent } from '@core';
 
 @Component({
   selector: 'prx-sidenav-item',

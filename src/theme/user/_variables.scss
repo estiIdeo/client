@@ -1,0 +1,36 @@
+//
+// user/variables.scss
+// This file is mean to overwrite Bootstrap or DashCore variables
+// It is recommended you do this way and not by editing the Bootstrap or DashCore variables files because future updates
+//
+
+// You can give a Boostrap or DashCore variable any value you like here, e.g
+// $body-color: #c3000d; // this will change the default font color
+$gray: #f9f9f9 !default;
+$white: #fff !default;
+$black: #000 !default;
+$wsi-color: #2d709f;
+$wsi-light-color: #f1f4f8;
+$color-success: #1dc958;
+$color-primary: $wsi-color; //		#55ce5f;
+$color-info: #fff;
+$color-warning: #f1ac21;
+$color-danger: #be2d2d;
+$color-fusion: darken(desaturate(adjust-hue($color-primary, 5), 80%), 25%);
+
+$primary-500: $color-primary !default;
+$success-500: $color-success !default;
+$danger-500: $color-danger !default;
+$warning-500: $color-warning !default;
+$info-500: $color-info !default;
+$primary-500: $color-primary !default;
+$fusion-50: lighten($color-fusion, 25%) !default;
+$primary-100: lighten($color-primary, 20%) !default;
+$primary-50: lighten($color-primary, 25%) !default;
+$primary-700: darken($color-primary, 10%) !default;
+$primary-900: darken($color-primary, 20%) !default;
+
+$border-radius: 4px;
+$fs-base: 13px !default;
+$fs-xs: $fs-base - 1;
+/* 12px   */

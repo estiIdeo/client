@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { BaseFormComponent } from '@core';
 import { FormBuilder, Validators } from '@angular/forms';
 
 @Component({

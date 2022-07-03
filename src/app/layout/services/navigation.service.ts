@@ -166,7 +166,7 @@ export class NavigationService implements OnDestroy {
   private  partnerAdminItems(): NavigationOptions[] {
     return <NavigationOptions[]>[
       {
-        title: 'Portal.Navigation.Dashboard',
+        title: 'Navigation.Dashboard',
 
         link: '/home',
         permission: { values: ['AccessAdminPanel'] } as Permission,

@@ -50,7 +50,7 @@ import { IconsModule } from '../../../blocks/icons/icons.module';
 import { IdeoDatePipe } from '../../infrastructure/pipes/ideo-date.pipe';
 import { DynamicComponentModule } from '../../../@shared/components/dynamic-component/dynamic-component.module';
 // import { AgmCoreModule } from '@agm/core';
-// import { I18nModule } from '../../../i18n/i18n.module';
+import { I18nModule } from '../../../i18n/i18n.module';
 import { SkuCellComponent } from './table-cells/sku-cell/sku-cell.component';
 import { FreeSearchFilterComponent } from './table-filters/free-search-filter/free-search-filter.component';
 import { SelectComponent } from '../select/select.component';
@@ -92,12 +92,12 @@ const COMPONENTS = [
 @NgModule({
   declarations: [...DIRECTIVES, ...COMPONENTS, FreeSearchFilterComponent],
   imports: [
-    NgbPopoverModule,
+    // NgbPopoverModule,
     CommonModule,
     TranslateModule,
     SelectModule,
     IconsModule,
-    // I18nModule,
+    I18nModule,
     MultiselectModule,
     ButtonModule,
     IdeoPipesModule,
@@ -108,6 +108,7 @@ const COMPONENTS = [
     NgbPaginationModule,
     NgbTooltipModule,
     NgbCollapseModule,
+    NgbPopoverModule,
     DynamicComponentModule,
     NgbDatepickerModule,
     BsDropdownModule,

@@ -43,7 +43,7 @@ $bullet-line-width: 10px;
       left: 0;
       position: absolute;
       height: 1px;
-      top: $bullet-height / 2;
+      top: calc($bullet-height / 2);
       background-color: $gray-300;
       width: $bullet-line-width;
     }

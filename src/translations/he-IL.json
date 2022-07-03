@@ -75,6 +75,7 @@
     "Navigation.Localization": "שפות",
     "Navigation.LocaleResources": "ערכי שפה",
     "Navigation.LocaleResource": "ערך שפה",
+    "Navigation.Dashboard": "לוּחַ מַחווָנִים",
 
     "Share.Modal.Mode.Edit.Entity": "ערוך {{entityName}}",
 
@@ -84,6 +85,8 @@
     "Auth.Login.Form.Fields.Password.Reqiured": "דרושה סיסמא",
     "Auth.Login.Form.Fields.OTP.Title": "הזן קוד אימות OTP בן 6 ספרות",
     "Auth.Login.Form.Fields.OTP.Reqiured": "נדרש קוד אימות",
+    "Auth.Login.Form.Information.EnterOtp": "אנא הזן מחדש את קוד האימות",
+    "Auth.Login.Form.Errors.IncorrectUserOrPassword": "שם המשתמש או הסיסמה אינם נכונים",
     "Auth.Login.Welcome.Title": "ברוך הבא",
     "Auth.Login.DifferentPassword": "הזן סיסמה אחרת",
 
@@ -105,6 +108,13 @@
     "Configuration.LocaleResources.Table.Language": "שפה",
     "Configuration.LocaleResources.Table.Value": "ערך",
     "Configuration.LocaleResources.Table.Header.Create": "יצירה",
-    "Configuration.LocaleResources.Table.Header.Title": "ערכי שפה"
+    "Configuration.LocaleResources.Table.Header.Title": "ערכי שפה",
+
+    "Footer.AppName": "בדיקה",
+    "Footer.AllRightsReserved": "כל הזכויות שמורות",
+    "Footer.PoweredBy": "מונע ע\"י",
+
+    "More.Setting.Language": "שפה"
+
 }
 

@@ -25,7 +25,7 @@ export class HeaderNavbarComponent extends BaseComponent implements OnInit, OnDe
 
   constructor(
     private navigation: NavigationService,
-  ) {
+  ) {    
     super('header-navbar');
   }
 

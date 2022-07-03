@@ -1,15 +1,17 @@
+
 <div class="container-fluid px-0" >
   <nav class="navbar navbar-expand-md" [ngClass]="{rtl :isRtl, isMobile :isMobile }">
     <div class="d-block d-md-none w-100 m-0 sidenav-logo d-flex justify-content-between w-100 p-4">
       <prx-menu-toggler class="sidenav-toggler" [ngClass]="{isOpen :sidenavCollapsed}" (click)="toggleSidenav()">
       </prx-menu-toggler>
       <a class="sidenav-brand d-flex justify-content-end mx-3" href="javascript:;">
-        <img src="assets/img/logo-light.svg" [alt]="'Portal.Footer.AppName' | translate" class="logo w-90" />
+        <img src="assets/img/logo-light.svg" [alt]="'Footer.AppName' | translate" class="logo w-90" />
       </a>
     </div>
     <div class="navbar-collapse" *ngIf="!!navGroups?.length">
-      <prx-header-navbar-item class=" nav-header-item" *ngFor="let option of (navGroups | permitted)" [option]="option"
+      <prx-header-navbar-item class=" nav-header-item" *ngFor="let option of (navGroups )" [option]="option"
         (onToggle)="option.open = $event" [level]="1">
+        <!-- | permitted -->
         <ng-container dropdown-icon>
           <prx-dropdown-icon [open]="option?.open" class="dd-icon d-none d-md-block"></prx-dropdown-icon>
           <prx-dropdown-icon [open]="option?.open" class="dd-icon d-block d-md-none"></prx-dropdown-icon>

@@ -1,4 +1,4 @@
-import { CUSTOM_ELEMENTS_SCHEMA, NgModule, NO_ERRORS_SCHEMA } from '@angular/core';
+import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { DynamicFormControlComponent } from './@core/components/dynamic-form-control/dynamic-form-control.component';
 import { ValidationMessagesComponent } from './@core/components/validation-messages/validation-messages.component';
